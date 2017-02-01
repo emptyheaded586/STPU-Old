@@ -19,7 +19,7 @@ namespace Smart_Touch_Protocol_Utility
 
         private void exportButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Export.exportTables();
         }
 
         private void AddProtocolButton_Click(object sender, RoutedEventArgs e)
