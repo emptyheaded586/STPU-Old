@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Data.SqlClient;
 using System.Windows;
 
 namespace Smart_Touch_Protocol_Utility
@@ -25,6 +26,10 @@ namespace Smart_Touch_Protocol_Utility
                 Export.exportTables();
             }
             catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
