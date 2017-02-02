@@ -12,19 +12,13 @@ namespace Smart_Touch_Protocol_Utility
             string connectionString = @"server=(local)\SQLExpress;database=STUV4_0;integrated Security=SSPI;";
             var dataTable = new DataTable();
 
-            using (SqlConnection connect = new SqlConnection(connectionString))
+            using (CsvReader csv = new CsvReader(new StreamReader(@"F:\UVATreatmentTypes.csv"), true))
             {
-                connect.Open();
-                using (SqlCommand cmd = new SqlCommand("CREATE TABLE [dbo].[UVATreatmentType]([UVATreatmentTypeCode] [nvarchar](4) NOT NULL,[UVATreatmentTypeDescription] [nvarchar](25) NOT NULL)", connect))
-                using (CsvReader csv = new CsvReader(new StreamReader(@"F:\UVATreatmentTypes.csv"), true))
+                dataTable.Load(csv);
+                using (SqlBulkCopy bulkCopy = new SqlBulkCopy(connectionString))
                 {
-                    cmd.ExecuteNonQuery();
-                    dataTable.Load(csv);
-                    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(connectionString))
-                    {
-                        bulkCopy.DestinationTableName = "dbo.UVATreatmentType";
-                        bulkCopy.WriteToServer(dataTable);
-                    }
+                    bulkCopy.DestinationTableName = "dbo.UVATreatmentTypes";
+                    bulkCopy.WriteToServer(dataTable);
                 }
             }
         }
