@@ -13,7 +13,14 @@ namespace Smart_Touch_Protocol_Utility
 
         private void importButton_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                Import.importTables();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void exportButton_Click(object sender, RoutedEventArgs e)
