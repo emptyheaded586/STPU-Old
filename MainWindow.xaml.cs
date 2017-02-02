@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Data.SqlClient;
+using System.Windows;
 
 namespace Smart_Touch_Protocol_Utility
 {
@@ -19,7 +20,14 @@ namespace Smart_Touch_Protocol_Utility
 
         private void exportButton_Click(object sender, RoutedEventArgs e)
         {
-            Export.exportTables();
+            try
+            {
+                Export.exportTables();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void AddProtocolButton_Click(object sender, RoutedEventArgs e)
