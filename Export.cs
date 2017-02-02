@@ -1,6 +1,5 @@
 ﻿using System.Data.SqlClient;
 using System.IO;
-using System.Windows;
 
 namespace Smart_Touch_Protocol_Utility
 {
@@ -18,7 +17,7 @@ namespace Smart_Touch_Protocol_Utility
                 {
                     connect.Open();
                     using (SqlDataReader reader = cmd.ExecuteReader())
-                    using (StreamWriter writer = new StreamWriter(@"c:\temp\GlobalProtocols.csv"))
+                    using (StreamWriter writer = new StreamWriter(@"F:\GlobalProtocols.csv"))
                     {
                         while (reader.Read())
                         {
@@ -29,7 +28,7 @@ namespace Smart_Touch_Protocol_Utility
                     }
                     cmd.CommandText = "SELECT * FROM [dbo].[GlobalProtocolTreatments]";
                     using (SqlDataReader reader = cmd.ExecuteReader())
-                    using (StreamWriter writer = new StreamWriter(@"c:\temp\GlobalProtocolTreatments.csv"))
+                    using (StreamWriter writer = new StreamWriter(@"F:\GlobalProtocolTreatments.csv"))
                     {
                         while (reader.Read())
                         {
@@ -39,7 +38,7 @@ namespace Smart_Touch_Protocol_Utility
                     }
                     cmd.CommandText = "SELECT * FROM [dbo].[UVATreatmentTypes]";
                     using (SqlDataReader reader = cmd.ExecuteReader())
-                    using (StreamWriter writer = new StreamWriter(@"c:\temp\UVATreatmentTypes.csv"))
+                    using (StreamWriter writer = new StreamWriter(@"F:\UVATreatmentTypes.csv"))
                     {
                         while (reader.Read())
                         {
@@ -49,7 +48,7 @@ namespace Smart_Touch_Protocol_Utility
                     }
                     cmd.CommandText = "SELECT * FROM [dbo].[UVBTreatmentTypes]";
                     using (SqlDataReader reader = cmd.ExecuteReader())
-                    using (StreamWriter writer = new StreamWriter(@"c:\temp\UVBTreatmentTypes.csv"))
+                    using (StreamWriter writer = new StreamWriter(@"F:\UVBTreatmentTypes.csv"))
                     {
                         while (reader.Read())
                         {
