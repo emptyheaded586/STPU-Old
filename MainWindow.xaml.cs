@@ -4,9 +4,6 @@ using System.Windows;
 
 namespace Smart_Touch_Protocol_Utility
 {
-    /*
-    *  Interaction logic for MainWindow.xaml
-    */
     public partial class MainWindow : Window
     {
         public MainWindow()
