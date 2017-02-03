@@ -17,6 +17,10 @@ namespace Smart_Touch_Protocol_Utility
             {
                 Import.importTables();
             }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);

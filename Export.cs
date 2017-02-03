@@ -19,6 +19,7 @@ namespace Smart_Touch_Protocol_Utility
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     using (StreamWriter writer = new StreamWriter(@"F:\GlobalProtocols.csv"))
                     {
+                        writer.WriteLine("GlobalProtocolID,MachineTypeCode,UVATreatmentTypeCode,UVBTreatmentTypeCode,SkinTypeListID,ScheduleListID,FYIDoseLimit,AuthDoseLimit,FYIDiff,AuthDiff");
                         while (reader.Read())
                         {
                             writer.WriteLine("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9}",
@@ -30,6 +31,7 @@ namespace Smart_Touch_Protocol_Utility
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     using (StreamWriter writer = new StreamWriter(@"F:\GlobalProtocolTreatments.csv"))
                     {
+                        writer.WriteLine("GlobalProtocolTreatmentID,GlobalProtocolID,TreatmentNumber,PrimaryDosage,SecondaryDosage");
                         while (reader.Read())
                         {
                             writer.WriteLine("{0},{1},{2},{3},{4}",
@@ -40,6 +42,7 @@ namespace Smart_Touch_Protocol_Utility
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     using (StreamWriter writer = new StreamWriter(@"F:\UVATreatmentTypes.csv"))
                     {
+                        writer.WriteLine("UVATreatmentTypeCode,UVATreatmentTypeDescription");
                         while (reader.Read())
                         {
                             writer.WriteLine("{0},{1}",
@@ -50,6 +53,7 @@ namespace Smart_Touch_Protocol_Utility
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     using (StreamWriter writer = new StreamWriter(@"F:\UVBTreatmentTypes.csv"))
                     {
+                        writer.WriteLine("UVBTreatmentTypeCode,UVBTreatmentTypeDescription");
                         while (reader.Read())
                         {
                             writer.WriteLine("{0},{1}",
