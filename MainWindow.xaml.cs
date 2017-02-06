@@ -39,6 +39,10 @@ namespace Smart_Touch_Protocol_Utility
             {
                 AddProtocol.addProtocol();
             }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
