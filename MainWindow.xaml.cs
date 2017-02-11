@@ -35,18 +35,8 @@ namespace Smart_Touch_Protocol_Utility
 
         private void AddProtocolButton_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                AddProtocol.addProtocol();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            AddProtocolWindow1 win1 = new AddProtocolWindow1();
+            win1.ShowDialog();
         }
 
         private void ModifyButton_Click(object sender, RoutedEventArgs e)
