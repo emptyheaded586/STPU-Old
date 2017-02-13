@@ -20,6 +20,9 @@ ALTER TABLE GlobalProtocols
 DROP CONSTRAINT FK_GlobalProtocols_UVATreatmentTypes,
 FK_GlobalProtocols_UVBTreatmentTypes
 
+ALTER TABLE GlobalProtocolTreatments
+DROP CONSTRAINT FK_GlobalProtocolTreatments_GlobalProtocols
+
 ALTER TABLE DiagnosisMachineTreatmentTypes
 DROP CONSTRAINT FK_DiagnosisMachineTreamentTypes_UVATreatmentTypes,
 FK_DiagnosisMachineTreamentTypes_UVBTreatmentTypes
@@ -30,3 +33,7 @@ DROP CONSTRAINT FK_TreatmentLimits_UVBTreatmentTypes
 TRUNCATE TABLE UVATreatmentTypes
 
 TRUNCATE TABLE UVBTreatmentTypes
+
+TRUNCATE TABLE GlobalProtocols
+
+TRUNCATE TABLE GlobalProtocolTreatments
