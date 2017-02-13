@@ -11,15 +11,58 @@ namespace Smart_Touch_Protocol_Utility
         {
             string connectionString = @"server=(local)\SQLExpress;database=STUV4_0;integrated Security=SSPI;";
             var dataTable = new DataTable();
+            string dropQuery = File.ReadAllText(@"C:\Users\kparliment\Desktop\DropQuery.txt"); // Has to be changed to a relative path before completion
+            string addQuery = File.ReadAllText(@"C:\Users\kparliment\Desktop\AddQuery.txt"); // Has to be changed to a relative path before completion
 
-            using (CsvReader csv = new CsvReader(new StreamReader(@"F:\UVATreatmentTypes.csv"), true))
+            using (SqlConnection connect = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand())
             {
-                dataTable.Load(csv);
-                using (SqlBulkCopy bulkCopy = new SqlBulkCopy(connectionString))
+                cmd.Connection = connect;
+                cmd.CommandText = dropQuery;
+                connect.Open();
+                cmd.ExecuteNonQuery();
+                using (CsvReader csv = new CsvReader(new StreamReader(@"F:\GlobalProtocols.csv"), true))
                 {
-                    bulkCopy.DestinationTableName = "dbo.UVATreatmentTypes";
-                    bulkCopy.WriteToServer(dataTable);
+                    dataTable.Load(csv);
+                    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(connectionString))
+                    {
+                        bulkCopy.DestinationTableName = "dbo.GlobalProtocols";
+                        bulkCopy.WriteToServer(dataTable);
+                    }
+                    dataTable.Clear();
                 }
+                using (CsvReader csv = new CsvReader(new StreamReader(@"F:\GlobalProtocolTreatments.csv"), true))
+                {
+                    dataTable.Load(csv);
+                    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(connectionString))
+                    {
+                        bulkCopy.DestinationTableName = "dbo.GlobalProtocolTreatments";
+                        bulkCopy.WriteToServer(dataTable);
+                    }
+                    dataTable.Clear();
+                }
+                using (CsvReader csv = new CsvReader(new StreamReader(@"F:\UVATreatmentTypes.csv"), true))
+                {
+                    dataTable.Load(csv);
+                    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(connectionString))
+                    {
+                        bulkCopy.DestinationTableName = "dbo.UVATreatmentTypes";
+                        bulkCopy.WriteToServer(dataTable);
+                    }
+                    dataTable.Clear();
+                }
+                using (CsvReader csv = new CsvReader(new StreamReader(@"F:\UVBTreatmentTypes.csv"), true))
+                {
+                    dataTable.Load(csv);
+                    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(connectionString))
+                    {
+                        bulkCopy.DestinationTableName = "dbo.UVBTreatmentTypes";
+                        bulkCopy.WriteToServer(dataTable);
+                    }
+                    dataTable.Clear();
+                }
+                cmd.CommandText = addQuery;
+                cmd.ExecuteNonQuery();
             }
         }
     }
