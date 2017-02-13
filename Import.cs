@@ -11,8 +11,8 @@ namespace Smart_Touch_Protocol_Utility
         {
             string connectionString = @"server=(local)\SQLExpress;database=STUV4_0;integrated Security=SSPI;";
             var dataTable = new DataTable();
-            string dropQuery = File.ReadAllText(@"C:\Users\kparliment\Desktop\DropQuery.txt"); // Has to be changed to a relative path before completion
-            string addQuery = File.ReadAllText(@"C:\Users\kparliment\Desktop\AddQuery.txt"); // Has to be changed to a relative path before completion
+            string dropQuery = File.ReadAllText(@"C:\Users\kparliment\Documents\Visual Studio 2015\Projects\Smart Touch Protocol Utility\DropQuery.txt"); // Has to be changed to a relative path before completion
+            string addQuery = File.ReadAllText(@"C:\Users\kparliment\Documents\Visual Studio 2015\Projects\Smart Touch Protocol Utility\AddQuery.txt"); // Has to be changed to a relative path before completion
 
             using (SqlConnection connect = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand())
