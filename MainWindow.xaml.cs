@@ -53,7 +53,7 @@ namespace Smart_Touch_Protocol_Utility
 
         private void ModifyButton_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Test");
         }
     }
 }
