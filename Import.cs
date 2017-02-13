@@ -29,7 +29,7 @@ namespace Smart_Touch_Protocol_Utility
                         bulkCopy.DestinationTableName = "dbo.GlobalProtocols";
                         bulkCopy.WriteToServer(dataTable);
                     }
-                    dataTable.Clear();
+                    dataTable.Reset();
                 }
                 using (CsvReader csv = new CsvReader(new StreamReader(@"F:\GlobalProtocolTreatments.csv"), true))
                 {
@@ -39,7 +39,7 @@ namespace Smart_Touch_Protocol_Utility
                         bulkCopy.DestinationTableName = "dbo.GlobalProtocolTreatments";
                         bulkCopy.WriteToServer(dataTable);
                     }
-                    dataTable.Clear();
+                    dataTable.Reset();
                 }
                 using (CsvReader csv = new CsvReader(new StreamReader(@"F:\UVATreatmentTypes.csv"), true))
                 {
@@ -49,7 +49,7 @@ namespace Smart_Touch_Protocol_Utility
                         bulkCopy.DestinationTableName = "dbo.UVATreatmentTypes";
                         bulkCopy.WriteToServer(dataTable);
                     }
-                    dataTable.Clear();
+                    dataTable.Reset();
                 }
                 using (CsvReader csv = new CsvReader(new StreamReader(@"F:\UVBTreatmentTypes.csv"), true))
                 {
@@ -59,7 +59,7 @@ namespace Smart_Touch_Protocol_Utility
                         bulkCopy.DestinationTableName = "dbo.UVBTreatmentTypes";
                         bulkCopy.WriteToServer(dataTable);
                     }
-                    dataTable.Clear();
+                    dataTable.Reset();
                 }
                 cmd.CommandText = addQuery;
                 cmd.ExecuteNonQuery();
