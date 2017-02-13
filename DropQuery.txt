@@ -1,0 +1,32 @@
+USE STUV4_0
+
+ALTER TABLE PatientActuals
+DROP CONSTRAINT FK_PatientActuals_UVATreatmentTypes,
+FK_PatientActuals_UVBTreatmentTypes
+
+ALTER TABLE PatientSchedules
+DROP CONSTRAINT FK_PatientSchedules_UVATreatmentTypes,
+FK_PatientSchedules_UVBTreatmentTypes
+
+ALTER TABLE PatientProtocols
+DROP CONSTRAINT FK_PatientProtocols_UVATreatmentTypes,
+FK_PatientProtocols_UVBTreatmentTypes
+
+ALTER TABLE MasterProtocols
+DROP CONSTRAINT FK_MasterProtocols_UVATreatmentTypes,
+FK_MasterProtocols_UVBTreatmentTypes
+
+ALTER TABLE GlobalProtocols
+DROP CONSTRAINT FK_GlobalProtocols_UVATreatmentTypes,
+FK_GlobalProtocols_UVBTreatmentTypes
+
+ALTER TABLE DiagnosisMachineTreatmentTypes
+DROP CONSTRAINT FK_DiagnosisMachineTreamentTypes_UVATreatmentTypes,
+FK_DiagnosisMachineTreamentTypes_UVBTreatmentTypes
+
+ALTER TABLE TreatmentLimits
+DROP CONSTRAINT FK_TreatmentLimits_UVBTreatmentTypes
+
+TRUNCATE TABLE UVATreatmentTypes
+
+TRUNCATE TABLE UVBTreatmentTypes
