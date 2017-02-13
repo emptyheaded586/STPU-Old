@@ -13,7 +13,7 @@
         <Label x:Name="uvCodeLabel" Content="UV Code:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="uvCodeTextBox" CharacterCasing="Upper" MaxLength="4" TextAlignment="Center" HorizontalAlignment="Left" Height="23" Margin="88,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
             <TextBox.ToolTip>
-                <TextBlock>Four character code to identify the protocol.</TextBlock>
+                <TextBlock>Four letter character code to identify the protocol.</TextBlock>
             </TextBox.ToolTip>
         </TextBox>
         <Label x:Name="uvDescription" Content="Description:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
