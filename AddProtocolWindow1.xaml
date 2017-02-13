@@ -1,0 +1,27 @@
+﻿<Window x:Class="Smart_Touch_Protocol_Utility.AddProtocolWindow1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Smart_Touch_Protocol_Utility"
+        mc:Ignorable="d"
+        Title="UV Selection" Height="300" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label x:Name="uvTypeLabel" Content="UV Type:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="uvaRadioButton" Content="UVA" GroupName="UV Type" IsChecked="True" HorizontalAlignment="Left" Margin="88,16,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="uvbRadioButton" Content="UVB" GroupName="UV Type" HorizontalAlignment="Left" Margin="135,16,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="uvCodeLabel" Content="UV Code:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="uvCodeTextBox" CharacterCasing="Upper" MaxLength="4" TextAlignment="Center" HorizontalAlignment="Left" Height="23" Margin="88,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+            <TextBox.ToolTip>
+                <TextBlock>Four character code to identify the protocol.</TextBlock>
+            </TextBox.ToolTip>
+        </TextBox>
+        <Label x:Name="uvDescription" Content="Description:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="uvDescripTextBox" HorizontalAlignment="Left" Height="23" Margin="88,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="196">
+            <TextBox.ToolTip>
+                <TextBlock>A brief description of the protocol.</TextBlock>
+            </TextBox.ToolTip>
+        </TextBox>
+        <Button x:Name="nextButton" Content="Next" Click="nextButton_Click" HorizontalAlignment="Center" Margin="0,0,0,10" VerticalAlignment="Bottom" Width="75"/>
+    </Grid>
+</Window>
