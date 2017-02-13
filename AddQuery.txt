@@ -40,6 +40,10 @@ CONSTRAINT FK_GlobalProtocols_UVBTreatmentTypes
 FOREIGN KEY (UVBTreatmentTypeCode)
 REFERENCES UVBTreatmentTypes(UVBTreatmentTypeCode)
 
+ALTER TABLE GlobalProtocolTreatments
+ADD CONSTRAINT FK_GlobalProtocolTreatments_GlobalProtocols
+FOREIGN KEY GlobalProtocols(GlobalProtocolID)
+
 ALTER TABLE DiagnosisMachineTreatmentTypes
 ADD CONSTRAINT FK_DiagnosisMachineTreamentTypes_UVATreatmentTypes
 FOREIGN KEY (UVATreatmentTypeCode)
