@@ -39,7 +39,7 @@ namespace Smart_Touch_Protocol_Utility
             }
         }
 
-        public static void uvaGlobalProtocols(string uvCode)
+        private static void uvaGlobalProtocols(string uvCode)
         {
             var num = gpID();
             var tempTable = new DataTable();
