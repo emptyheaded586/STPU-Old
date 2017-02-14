@@ -13,28 +13,35 @@ namespace Smart_Touch_Protocol_Utility
 
         private void nextButton_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (!string.IsNullOrWhiteSpace(uvCodeTextBox.Text))
             {
-                var uvCode = uvCodeTextBox.Text;
-                var uvDescrip = uvDescripTextBox.Text;
+                try
+                {
+                    var uvCode = uvCodeTextBox.Text;
+                    var uvDescrip = uvDescripTextBox.Text;
 
-                if (uvbRadioButton.IsChecked == true)
-                {
-                    AddProtocol.uvbTreatType(uvCode, uvDescrip);
+                    if (uvbRadioButton.IsChecked == true)
+                    {
+                        AddProtocol.uvbTreatType(uvCode, uvDescrip);
+                    }
+                    else
+                    {
+                        AddProtocol.uvaTreatType(uvCode, uvDescrip);
+                    }
+                    Close();
                 }
-                else
+                catch (SqlException ex)
                 {
-                    AddProtocol.uvaTreatType(uvCode, uvDescrip);
+                    MessageBox.Show(ex.Message);
                 }
-                Close();
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (SqlException ex)
+            else
             {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Please enter a UV code to continue.");
             }
         }
     }

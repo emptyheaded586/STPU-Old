@@ -10,6 +10,12 @@ namespace Smart_Touch_Protocol_Utility
         {
             InitializeComponent();
         }
+        
+        public static string sqlConnection()
+        {
+            var connection = @"server=(local)\SQLExpress;database=STUV4_0;integrated Security=SSPI;";
+            return connection;
+        }
 
         private void importButton_Click(object sender, RoutedEventArgs e)
         {
