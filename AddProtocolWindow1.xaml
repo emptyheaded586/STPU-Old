@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Smart_Touch_Protocol_Utility"
         mc:Ignorable="d"
-        Title="UV Selection" Height="175.61" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="UV Selection" Height="222.277" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label x:Name="uvTypeLabel" Content="UV Type:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="uvaRadioButton" Content="UVA" GroupName="UV Type" IsChecked="True" HorizontalAlignment="Left" Margin="88,16,0,0" VerticalAlignment="Top"/>
@@ -22,6 +22,9 @@
                 <TextBlock>A brief description of the protocol.</TextBlock>
             </TextBox.ToolTip>
         </TextBox>
+        <Label x:Name="numTreatLabel" Content="Number of Treatments:" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.307,-0.372"/>
+        <TextBox x:Name="numTreatTextBox" TextAlignment="Center" MaxLength="2" PreviewTextInput="numTreatTextBox_PreviewTextInput" HorizontalAlignment="Left" Height="23" Margin="147,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="49"/>
         <Button x:Name="nextButton" Content="Next" Click="nextButton_Click" HorizontalAlignment="Center" Margin="0,0,0,10" VerticalAlignment="Bottom" Width="75"/>
+
     </Grid>
 </Window>
