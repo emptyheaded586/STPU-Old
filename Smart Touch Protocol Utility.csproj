@@ -39,6 +39,7 @@
     <Reference Include="LumenWorks.Framework.IO">
       <HintPath>..\..\..\..\Downloads\CSV Reader\LumenWorks.Framework.IO\bin\Release\LumenWorks.Framework.IO.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />

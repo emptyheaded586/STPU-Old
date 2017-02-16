@@ -25,16 +25,16 @@ namespace Smart_Touch_Protocol_Utility
 
                     if (uvbRadioButton.IsChecked == true)
                     {
+                        AddProtocol.gptUVBTable(gpID, numTreat);
                         AddProtocol.uvbTreatType(uvCode, uvDescrip);
                         AddProtocol.uvbGlobalProtocols(uvCode);
-                        AddProtocol.gptUVBTable(gpID, numTreat);
                         //AddProtocol.resourceUVBEdit(uvCode);
                     }
                     else
                     {
+                        AddProtocol.gptUVATable(gpID, numTreat);
                         AddProtocol.uvaTreatType(uvCode, uvDescrip);
                         AddProtocol.uvaGlobalProtocols(uvCode);
-                        AddProtocol.gptUVATable(gpID, numTreat);
                         //AddProtocol.resourceUVAEdit(uvCode);
                     }
                     MessageBox.Show("Protocol has been added.", "Protocol complete");
