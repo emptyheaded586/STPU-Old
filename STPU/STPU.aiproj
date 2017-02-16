@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">All</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>df0b3bac-94a4-4783-ad76-9b43c9142055</ProjectGuid>
+    <ProjectGuid>7f245689-aa49-4da0-b44d-2ea5f3e18ecc</ProjectGuid>
     <OutputType>msi</OutputType>
     <ProjectHome>.</ProjectHome>
     <StartupFile>STPU.aip</StartupFile>
