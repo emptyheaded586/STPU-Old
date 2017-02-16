@@ -11,9 +11,10 @@ namespace Smart_Touch_Protocol_Utility
             InitializeComponent();
         }
 
-        private void nextButton_Click(object sender, RoutedEventArgs e)
+        private void doneButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(uvCodeTextBox.Text))
+            if (!string.IsNullOrWhiteSpace(uvCodeTextBox.Text) && !string.IsNullOrWhiteSpace(numTreatTextBox.Text)
+                && !string.IsNullOrWhiteSpace(uvDescripTextBox.Text))
             {
                 try
                 {
@@ -34,6 +35,7 @@ namespace Smart_Touch_Protocol_Utility
                         AddProtocol.uvaGlobalProtocols(uvCode);
                         AddProtocol.gptTable(gpID, numTreat);
                     }
+                    MessageBox.Show("Protocol has been added.", "Protocol complete");
                     Close();
                 }
                 catch (SqlException ex)
@@ -47,7 +49,8 @@ namespace Smart_Touch_Protocol_Utility
             }
             else
             {
-                MessageBox.Show("Please enter a UV code to continue.");
+                MessageBox.Show("Please complete all fields.", "Missing Information",
+                    MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
         }
 

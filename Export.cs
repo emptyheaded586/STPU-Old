@@ -7,9 +7,7 @@ namespace Smart_Touch_Protocol_Utility
     {
         public static void exportTables()
         {
-            string connectionString = @"server=(local)\SQLExpress;database=STUV4_0;integrated Security=SSPI;";
-
-            using (SqlConnection connect = new SqlConnection(connectionString))
+            using (SqlConnection connect = new SqlConnection(MainWindow.sqlConnection()))
             {
                 string queryStatement = "SELECT * FROM [dbo].[GlobalProtocols]";
 

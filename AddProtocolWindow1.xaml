@@ -24,7 +24,7 @@
         </TextBox>
         <Label x:Name="numTreatLabel" Content="Number of Treatments:" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.307,-0.372"/>
         <TextBox x:Name="numTreatTextBox" TextAlignment="Center" MaxLength="2" PreviewTextInput="numTreatTextBox_PreviewTextInput" HorizontalAlignment="Left" Height="23" Margin="147,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="49"/>
-        <Button x:Name="nextButton" Content="Next" Click="nextButton_Click" HorizontalAlignment="Center" Margin="0,0,0,10" VerticalAlignment="Bottom" Width="75"/>
+        <Button x:Name="doneButton" Content="Done" Click="doneButton_Click" HorizontalAlignment="Center" Margin="0,0,0,10" VerticalAlignment="Bottom" Width="75"/>
 
     </Grid>
 </Window>
