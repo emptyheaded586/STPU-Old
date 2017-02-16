@@ -1,5 +1,8 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
+using System.IO;
+using System.Windows;
 
 namespace Smart_Touch_Protocol_Utility
 {
@@ -105,10 +108,16 @@ namespace Smart_Touch_Protocol_Utility
             return gpID;
         }
 
-        public static void gptTable(int gpID, int numTreat)
+        public static void gptUVATable(int gpID, int numTreat)
         {
             DataTable dt = new DataTable();
             DataRow row;
+            double[] dosage = new double[numTreat];
+            
+            for (int x = 0; x < numTreat; ++x)
+            {
+                
+            }
 
             dt.Columns.Add("GlobalProtocolTreatmentID");
             dt.Columns.Add("GlobalProtocolID");
@@ -133,6 +142,38 @@ namespace Smart_Touch_Protocol_Utility
                 bulkCopy.DestinationTableName = "dbo.GlobalProtocolTreatments";
                 bulkCopy.WriteToServer(dt);
             }
+        }
+
+        public static void resourceUVAEdit(string uvCode)
+        {
+            string path = @"C:\Program Files (x86)\Daavlin\Smart Touch\Daavlin STUV 4.0\Resources\English.txt";
+            
+            using (StreamWriter w = File.AppendText(path))
+            {
+                w.WriteLine("uvatreatmenttypes.uvatreatmenttypedescription.--- = " + uvCode);
+            }
+
+            ProcessStartInfo resgen = new ProcessStartInfo();
+            resgen.Verb = "runas";
+            resgen.FileName = @"C:\Program Files (x86)\Daavlin\Smart Touch\Daavlin STUV 4.0\Resources\Resgen.exe";
+            resgen.Arguments = "English.txt";
+            Process.Start(resgen);
+        }
+
+        public static void resourceUVBEdit(string uvCode)
+        {
+            string path = @"C:\Program Files (x86)\Daavlin\Smart Touch\Daavlin STUV 4.0\Resources\English.txt";
+
+            using (StreamWriter w = File.AppendText(path))
+            {
+                w.WriteLine("uvbtreatmenttypes.uvbtreatmenttypedescription.--- = " + uvCode);
+            }
+
+            ProcessStartInfo resgen = new ProcessStartInfo();
+            resgen.Verb = "runas";
+            resgen.FileName = @"C:\Program Files (x86)\Daavlin\Smart Touch\Daavlin STUV 4.0\Resources\Resgen.exe";
+            resgen.Arguments = "English.txt";
+            Process.Start(resgen);
         }
     }
 }

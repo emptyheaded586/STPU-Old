@@ -2,6 +2,7 @@
 using LumenWorks.Framework.IO.Csv;
 using System.IO;
 using System.Data;
+using System;
 
 namespace Smart_Touch_Protocol_Utility
 {
@@ -10,9 +11,11 @@ namespace Smart_Touch_Protocol_Utility
         public static void importTables()
         {
             var dataTable = new DataTable();
-            string dropQuery = File.ReadAllText(@"C:\Users\kparliment\Documents\Visual Studio 2015\Projects\Smart Touch Protocol Utility\DropQuery.txt"); // Has to be changed to a relative path before completion
-            string addQuery = File.ReadAllText(@"C:\Users\kparliment\Documents\Visual Studio 2015\Projects\Smart Touch Protocol Utility\AddQuery.txt"); // Has to be changed to a relative path before completion
-
+            string addPath = Path.Combine(Environment.CurrentDirectory, @"Queries\", "AddQuery.txt");
+            string dropPath = Path.Combine(Environment.CurrentDirectory, @"Queries\", "DropQuery.txt");
+            string addQuery = File.ReadAllText(addPath);
+            string dropQuery = File.ReadAllText(dropPath);
+            
             using (SqlConnection connect = new SqlConnection(MainWindow.sqlConnection()))
             using (SqlCommand cmd = new SqlCommand())
             {
