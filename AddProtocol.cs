@@ -151,12 +151,12 @@ namespace Smart_Touch_Protocol_Utility
             DataRow row;
             double[] dosage = new double[numTreat];
 
-            dosage[0] = Double.Parse(Microsoft.VisualBasic.Interaction.InputBox("Enter the starting % of MED for treatment #" + (1) +
-                "\nEnter as a decimal value (50% = .5)", "UVB Dosage"));
+            dosage[0] = (Double.Parse(Microsoft.VisualBasic.Interaction.InputBox("Enter the starting % of MED for treatment #" + (1) +
+                "\nEnter value as a whole number (50% = 50)", "UVB Dosage"))) * .01;
             for (int x = 1; x < numTreat; ++x)
             {
-                dosage[x] = Double.Parse(Microsoft.VisualBasic.Interaction.InputBox("Enter the % increase for treatment #" + (x + 1) +
-                    "\nEnter value as a decimal (10% = .1)", "UVB Dosage"));
+                dosage[x] = (Double.Parse(Microsoft.VisualBasic.Interaction.InputBox("Enter the % increase for treatment #" + (x + 1) +
+                    "\nEnter value as a whole number (10% = 10)", "UVB Dosage"))) * .01;
             }
 
             dt.Columns.Add("GlobalProtocolTreatmentID");
