@@ -184,13 +184,13 @@ namespace Smart_Touch_Protocol_Utility
             }
         }
 
-        public static void resourceUVAEdit(string uvCode)
+        public static void resourceUVAEdit(string uvCode, string uvDescrip)
         {
             string path = @"C:\Program Files (x86)\Daavlin\Smart Touch\Daavlin STUV 4.0\Resources\English.txt";
             
             using (StreamWriter w = File.AppendText(path))
             {
-                w.WriteLine("uvatreatmenttypes.uvatreatmenttypedescription.--- = " + uvCode);
+                w.WriteLine("uvatreatmenttypes.uvatreatmenttypedescription." + uvCode + " = " + uvDescrip);
             }
 
             ProcessStartInfo resgen = new ProcessStartInfo();
@@ -200,13 +200,13 @@ namespace Smart_Touch_Protocol_Utility
             Process.Start(resgen);
         }
 
-        public static void resourceUVBEdit(string uvCode)
+        public static void resourceUVBEdit(string uvCode, string uvDescrip)
         {
             string path = @"C:\Program Files (x86)\Daavlin\Smart Touch\Daavlin STUV 4.0\Resources\English.txt";
 
             using (StreamWriter w = File.AppendText(path))
             {
-                w.WriteLine("uvbtreatmenttypes.uvbtreatmenttypedescription.--- = " + uvCode);
+                w.WriteLine("uvbtreatmenttypes.uvbtreatmenttypedescription." + uvCode + " = " + uvDescrip);
             }
 
             ProcessStartInfo resgen = new ProcessStartInfo();
