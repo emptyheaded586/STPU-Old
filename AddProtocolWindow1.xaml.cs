@@ -16,13 +16,13 @@ namespace Smart_Touch_Protocol_Utility
             if (!string.IsNullOrWhiteSpace(uvCodeTextBox.Text) && !string.IsNullOrWhiteSpace(numTreatTextBox.Text)
                 && !string.IsNullOrWhiteSpace(uvDescripTextBox.Text))
             {
+                var uvCode = uvCodeTextBox.Text;
+                var uvDescrip = uvDescripTextBox.Text;
+                int numTreat = int.Parse(numTreatTextBox.Text);
+                int gpID = AddProtocol.gpID();
+
                 try
                 {
-                    var uvCode = uvCodeTextBox.Text;
-                    var uvDescrip = uvDescripTextBox.Text;
-                    int numTreat = int.Parse(numTreatTextBox.Text);
-                    int gpID = AddProtocol.gpID();
-
                     if (uvbRadioButton.IsChecked == true)
                     {
                         AddProtocol.gptUVBTable(gpID, numTreat);
