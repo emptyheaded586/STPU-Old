@@ -3,7 +3,6 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.IO;
-using System.Windows;
 
 namespace Smart_Touch_Protocol_Utility
 {
