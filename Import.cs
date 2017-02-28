@@ -26,6 +26,7 @@ namespace Smart_Touch_Protocol_Utility
                 cmd.CommandText = dropQuery;
                 connect.Open();
                 cmd.ExecuteNonQuery();
+
                 using (CsvReader csv = new CsvReader(new StreamReader(fbd.SelectedPath + @"\GlobalProtocols.csv"), true))
                 {
                     dataTable.Load(csv);
@@ -36,6 +37,7 @@ namespace Smart_Touch_Protocol_Utility
                     }
                     dataTable.Reset();
                 }
+
                 using (CsvReader csv = new CsvReader(new StreamReader(fbd.SelectedPath + @"\GlobalProtocolTreatments.csv"), true))
                 {
                     dataTable.Load(csv);
@@ -46,6 +48,7 @@ namespace Smart_Touch_Protocol_Utility
                     }
                     dataTable.Reset();
                 }
+
                 using (CsvReader csv = new CsvReader(new StreamReader(fbd.SelectedPath + @"\UVATreatmentTypes.csv"), true))
                 {
                     dataTable.Load(csv);
@@ -56,6 +59,7 @@ namespace Smart_Touch_Protocol_Utility
                     }
                     dataTable.Reset();
                 }
+
                 using (CsvReader csv = new CsvReader(new StreamReader(fbd.SelectedPath + @"\UVBTreatmentTypes.csv"), true))
                 {
                     dataTable.Load(csv);
@@ -66,6 +70,7 @@ namespace Smart_Touch_Protocol_Utility
                     }
                     dataTable.Reset();
                 }
+
                 cmd.CommandText = addQuery;
                 cmd.ExecuteNonQuery();
                 fbd.Dispose();
