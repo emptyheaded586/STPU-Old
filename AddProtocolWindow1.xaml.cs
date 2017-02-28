@@ -28,14 +28,14 @@ namespace Smart_Touch_Protocol_Utility
                         AddProtocol.gptUVBTable(gpID, numTreat);
                         AddProtocol.uvbTreatType(uvCode, uvDescrip);
                         AddProtocol.uvbGlobalProtocols(uvCode);
-                        //AddProtocol.resourceUVBEdit(uvCode, uvDescrip);
+                        // AddProtocol.resourceUVBEdit(uvCode, uvDescrip);
                     }
                     else
                     {
                         AddProtocol.gptUVATable(gpID, numTreat);
                         AddProtocol.uvaTreatType(uvCode, uvDescrip);
                         AddProtocol.uvaGlobalProtocols(uvCode);
-                        //AddProtocol.resourceUVAEdit(uvCode, uvDescrip);
+                        // AddProtocol.resourceUVAEdit(uvCode, uvDescrip);
                     }
                     MessageBox.Show("Protocol has been added.", "Protocol complete");
                     Close();

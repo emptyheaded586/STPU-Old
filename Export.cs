@@ -109,6 +109,8 @@ namespace Smart_Touch_Protocol_Utility
                               reader[0], reader[1]);
                         }
                     }
+
+                    fbd.Dispose();
                 }
             }
         }

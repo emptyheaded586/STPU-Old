@@ -68,6 +68,7 @@ namespace Smart_Touch_Protocol_Utility
                 }
                 cmd.CommandText = addQuery;
                 cmd.ExecuteNonQuery();
+                fbd.Dispose();
             }
         }
     }

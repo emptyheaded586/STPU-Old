@@ -184,6 +184,8 @@ namespace Smart_Touch_Protocol_Utility
             }
         }
 
+        // Currently not in use due to needing admin privs to 
+        // make changes to the files.
         public static void resourceUVAEdit(string uvCode, string uvDescrip)
         {
             string path = @"C:\Program Files (x86)\Daavlin\Smart Touch\Daavlin STUV 4.0\Resources\English.txt";
@@ -200,6 +202,8 @@ namespace Smart_Touch_Protocol_Utility
             Process.Start(resgen);
         }
 
+        // Currently not in use due to needing admin privs to 
+        // make changes to the files.
         public static void resourceUVBEdit(string uvCode, string uvDescrip)
         {
             string path = @"C:\Program Files (x86)\Daavlin\Smart Touch\Daavlin STUV 4.0\Resources\English.txt";
