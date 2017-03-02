@@ -1,4 +1,5 @@
 ﻿using System.Data.SqlClient;
+using System.Configuration;
 
 namespace Smart_Touch_Protocol_Utility.AddProtocols
 {
@@ -6,9 +7,10 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
     {
         public static void uvaTreatType(string uvCode, string uvDescription)
         {
+            string sqlConnection = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             string uvQuery = "INSERT INTO UVATreatmentTypes (UVATreatmentTypeCode, UVATreatmentTypeDescription) VALUES (@uvCode, @uvDescription)";
 
-            using (SqlConnection connect = new SqlConnection(MainWindow.sqlConnection()))
+            using (SqlConnection connect = new SqlConnection(sqlConnection))
             using (SqlCommand cmd = new SqlCommand())
             {
                 cmd.Connection = connect;
@@ -22,9 +24,10 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
 
         public static void uvbTreatType(string uvCode, string uvDescription)
         {
+            string sqlConnection = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             string uvQuery = "INSERT INTO UVBTreatmentTypes (UVBTreatmentTypeCode, UVBTreatmentTypeDescription) VALUES (@uvCode, @uvDescription)";
 
-            using (SqlConnection connect = new SqlConnection(MainWindow.sqlConnection()))
+            using (SqlConnection connect = new SqlConnection(sqlConnection))
             using (SqlCommand cmd = new SqlCommand())
             {
                 cmd.Connection = connect;

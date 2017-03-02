@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace Smart_Touch_Protocol_Utility.AddProtocols
 {
@@ -8,6 +9,7 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
     {
         public static void gptUVA(int gpID, int numTreat)
         {
+            string sqlConnection = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             DataTable dt = new DataTable();
             DataRow row;
             double[] dosage = new double[numTreat];
@@ -35,7 +37,7 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
                     dt.Rows.Add(row);
                 }
             }
-            using (SqlBulkCopy bulkCopy = new SqlBulkCopy(MainWindow.sqlConnection()))
+            using (SqlBulkCopy bulkCopy = new SqlBulkCopy(sqlConnection))
             {
                 bulkCopy.DestinationTableName = "dbo.GlobalProtocolTreatments";
                 bulkCopy.WriteToServer(dt);
@@ -44,6 +46,7 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
 
         public static void gptUVB(int gpID, int numTreat)
         {
+            string sqlConnection = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             DataTable dt = new DataTable();
             DataRow row;
             double[] dosage = new double[numTreat];
@@ -74,7 +77,7 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
                     dt.Rows.Add(row);
                 }
             }
-            using (SqlBulkCopy bulkCopy = new SqlBulkCopy(MainWindow.sqlConnection()))
+            using (SqlBulkCopy bulkCopy = new SqlBulkCopy(sqlConnection))
             {
                 bulkCopy.DestinationTableName = "dbo.GlobalProtocolTreatments";
                 bulkCopy.WriteToServer(dt);

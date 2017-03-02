@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace Smart_Touch_Protocol_Utility.AddProtocols
 {
@@ -7,13 +8,14 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
     {
         public static void uvaGlobalProtocols(string uvCode)
         {
+            string sqlConnection = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             var num = gpID();
             var tempTable = new DataTable();
             string globalQuery = "SELECT MachineTypeCode,UVATreatmentTypeCode,UVBTreatmentTypeCode,SkinTypeListID," +
                 "ScheduleListID,FYIDoseLimit,AuthDoseLimit,FYIDiff,AuthDiff " +
                 "FROM GlobalProtocols WHERE UVATreatmentTypeCode = 'UVA'";
 
-            using (SqlConnection connect = new SqlConnection(MainWindow.sqlConnection()))
+            using (SqlConnection connect = new SqlConnection(sqlConnection))
             using (SqlDataAdapter da = new SqlDataAdapter(globalQuery, connect))
             {
                 da.Fill(tempTable);
@@ -24,7 +26,7 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
                     tempTable.Rows[rowIndex][2] = uvCode;
                     num += 1;
                 }
-                using (SqlBulkCopy bulkCopy = new SqlBulkCopy(MainWindow.sqlConnection()))
+                using (SqlBulkCopy bulkCopy = new SqlBulkCopy(sqlConnection))
                 {
                     bulkCopy.DestinationTableName = "dbo.GlobalProtocols";
                     bulkCopy.WriteToServer(tempTable);
@@ -34,13 +36,14 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
 
         public static void uvbGlobalProtocols(string uvCode)
         {
+            string sqlConnection = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             var num = gpID();
             var tempTable = new DataTable();
             string globalQuery = "SELECT MachineTypeCode,UVATreatmentTypeCode,UVBTreatmentTypeCode,SkinTypeListID," +
                 "ScheduleListID,FYIDoseLimit,AuthDoseLimit,FYIDiff,AuthDiff " +
                 "FROM GlobalProtocols WHERE UVBTreatmentTypeCode = 'UVBH'";
 
-            using (SqlConnection connect = new SqlConnection(MainWindow.sqlConnection()))
+            using (SqlConnection connect = new SqlConnection(sqlConnection))
             using (SqlDataAdapter da = new SqlDataAdapter(globalQuery, connect))
             {
                 da.Fill(tempTable);
@@ -51,7 +54,7 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
                     tempTable.Rows[rowIndex][3] = uvCode;
                     num += 1;
                 }
-                using (SqlBulkCopy bulkCopy = new SqlBulkCopy(MainWindow.sqlConnection()))
+                using (SqlBulkCopy bulkCopy = new SqlBulkCopy(sqlConnection))
                 {
                     bulkCopy.DestinationTableName = "dbo.GlobalProtocols";
                     bulkCopy.WriteToServer(tempTable);
@@ -62,9 +65,10 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
         public static int gpID()
         {
             int gpID;
+            string sqlConnection = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             string gpIDQuery = "SELECT TOP(1) GlobalProtocolID FROM GlobalProtocols ORDER BY GlobalProtocolID DESC";
 
-            using (SqlConnection connect = new SqlConnection(MainWindow.sqlConnection()))
+            using (SqlConnection connect = new SqlConnection(sqlConnection))
             using (SqlCommand cmd = new SqlCommand(gpIDQuery, connect))
             {
                 connect.Open();

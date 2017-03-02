@@ -4,6 +4,7 @@ using System.IO;
 using System.Data;
 using System;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace Smart_Touch_Protocol_Utility
 {
@@ -11,6 +12,7 @@ namespace Smart_Touch_Protocol_Utility
     {
         public static void importTables()
         {
+            string sqlConnection = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             var dataTable = new DataTable();
             string addPath = Path.Combine(Environment.CurrentDirectory, @"Queries\", "AddQuery.txt");
@@ -19,7 +21,7 @@ namespace Smart_Touch_Protocol_Utility
             string dropQuery = File.ReadAllText(dropPath);
 
             fbd.ShowDialog();
-            using (SqlConnection connect = new SqlConnection(MainWindow.sqlConnection()))
+            using (SqlConnection connect = new SqlConnection(sqlConnection))
             using (SqlCommand cmd = new SqlCommand())
             {
                 cmd.Connection = connect;
@@ -30,7 +32,7 @@ namespace Smart_Touch_Protocol_Utility
                 using (CsvReader csv = new CsvReader(new StreamReader(fbd.SelectedPath + @"\GlobalProtocols.csv"), true))
                 {
                     dataTable.Load(csv);
-                    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(MainWindow.sqlConnection()))
+                    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(sqlConnection))
                     {
                         bulkCopy.DestinationTableName = "dbo.GlobalProtocols";
                         bulkCopy.WriteToServer(dataTable);
@@ -41,7 +43,7 @@ namespace Smart_Touch_Protocol_Utility
                 using (CsvReader csv = new CsvReader(new StreamReader(fbd.SelectedPath + @"\GlobalProtocolTreatments.csv"), true))
                 {
                     dataTable.Load(csv);
-                    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(MainWindow.sqlConnection()))
+                    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(sqlConnection))
                     {
                         bulkCopy.DestinationTableName = "dbo.GlobalProtocolTreatments";
                         bulkCopy.WriteToServer(dataTable);
@@ -52,7 +54,7 @@ namespace Smart_Touch_Protocol_Utility
                 using (CsvReader csv = new CsvReader(new StreamReader(fbd.SelectedPath + @"\UVATreatmentTypes.csv"), true))
                 {
                     dataTable.Load(csv);
-                    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(MainWindow.sqlConnection()))
+                    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(sqlConnection))
                     {
                         bulkCopy.DestinationTableName = "dbo.UVATreatmentTypes";
                         bulkCopy.WriteToServer(dataTable);
@@ -63,7 +65,7 @@ namespace Smart_Touch_Protocol_Utility
                 using (CsvReader csv = new CsvReader(new StreamReader(fbd.SelectedPath + @"\UVBTreatmentTypes.csv"), true))
                 {
                     dataTable.Load(csv);
-                    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(MainWindow.sqlConnection()))
+                    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(sqlConnection))
                     {
                         bulkCopy.DestinationTableName = "dbo.UVBTreatmentTypes";
                         bulkCopy.WriteToServer(dataTable);

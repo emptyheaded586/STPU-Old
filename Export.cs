@@ -1,6 +1,7 @@
 ﻿using System.Data.SqlClient;
 using System.IO;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace Smart_Touch_Protocol_Utility
 {
@@ -8,10 +9,11 @@ namespace Smart_Touch_Protocol_Utility
     {
         public static void exportTables()
         {
+            string sqlConnection = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             fbd.ShowDialog();
 
-            using (SqlConnection connect = new SqlConnection(MainWindow.sqlConnection()))
+            using (SqlConnection connect = new SqlConnection(sqlConnection))
             {
                 int numColumns;
                 string queryStatement = "SELECT * FROM [dbo].[GlobalProtocols]";
