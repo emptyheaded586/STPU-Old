@@ -69,7 +69,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="AddProtocol.cs" />
+    <Compile Include="GlobalProtocols.cs" />
+    <Compile Include="GlobalProtocolTreatments.cs" />
+    <Compile Include="ResourceEdit.cs" />
+    <Compile Include="TreatmentType.cs" />
     <Compile Include="AddProtocolWindow1.xaml.cs">
       <DependentUpon>AddProtocolWindow1.xaml</DependentUpon>
     </Compile>

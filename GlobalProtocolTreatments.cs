@@ -1,0 +1,84 @@
+﻿using System;
+using System.Data;
+using System.Data.SqlClient;
+
+namespace Smart_Touch_Protocol_Utility.AddProtocols
+{
+    class GlobalProtocolTreatments
+    {
+        public static void gptUVA(int gpID, int numTreat)
+        {
+            DataTable dt = new DataTable();
+            DataRow row;
+            double[] dosage = new double[numTreat];
+
+            for (int x = 0; x < numTreat; ++x)
+            {
+                dosage[x] = Double.Parse(Microsoft.VisualBasic.Interaction.InputBox("Enter dosage amount for treatment #" + (x + 1), "UVA Dosage"));
+            }
+
+            dt.Columns.Add("GlobalProtocolTreatmentID");
+            dt.Columns.Add("GlobalProtocolID");
+            dt.Columns.Add("TreatmentNumber");
+            dt.Columns.Add("PrimaryDosage");
+            dt.Columns.Add("SecondaryDosage");
+
+            for (int x = gpID; x < (gpID + 54); ++x)
+            {
+                for (int i = 0; i < numTreat; ++i)
+                {
+                    row = dt.NewRow();
+                    row[1] = x;
+                    row[2] = i + 1;
+                    row[3] = dosage[i];
+                    row[4] = 0;
+                    dt.Rows.Add(row);
+                }
+            }
+            using (SqlBulkCopy bulkCopy = new SqlBulkCopy(MainWindow.sqlConnection()))
+            {
+                bulkCopy.DestinationTableName = "dbo.GlobalProtocolTreatments";
+                bulkCopy.WriteToServer(dt);
+            }
+        }
+
+        public static void gptUVB(int gpID, int numTreat)
+        {
+            DataTable dt = new DataTable();
+            DataRow row;
+            double[] dosage = new double[numTreat];
+
+            dosage[0] = (Double.Parse(Microsoft.VisualBasic.Interaction.InputBox("Enter the starting % of MED for treatment #" + (1) +
+                "\nEnter value as a whole number (50% = 50)", "UVB Dosage"))) * .01;
+            for (int x = 1; x < numTreat; ++x)
+            {
+                dosage[x] = (Double.Parse(Microsoft.VisualBasic.Interaction.InputBox("Enter the % increase for treatment #" + (x + 1) +
+                    "\nEnter value as a whole number (10% = 10)", "UVB Dosage"))) * .01;
+            }
+
+            dt.Columns.Add("GlobalProtocolTreatmentID");
+            dt.Columns.Add("GlobalProtocolID");
+            dt.Columns.Add("TreatmentNumber");
+            dt.Columns.Add("PrimaryDosage");
+            dt.Columns.Add("SecondaryDosage");
+
+            for (int x = gpID; x < (gpID + 54); ++x)
+            {
+                for (int i = 0; i < numTreat; ++i)
+                {
+                    row = dt.NewRow();
+                    row[1] = x;
+                    row[2] = i + 1;
+                    row[3] = dosage[i];
+                    row[4] = 0;
+                    dt.Rows.Add(row);
+                }
+            }
+            using (SqlBulkCopy bulkCopy = new SqlBulkCopy(MainWindow.sqlConnection()))
+            {
+                bulkCopy.DestinationTableName = "dbo.GlobalProtocolTreatments";
+                bulkCopy.WriteToServer(dt);
+            }
+        }
+    }
+}

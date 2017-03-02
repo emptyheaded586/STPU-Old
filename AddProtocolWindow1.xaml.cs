@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Windows;
+using Smart_Touch_Protocol_Utility.AddProtocols;
 
 namespace Smart_Touch_Protocol_Utility
 {
@@ -19,22 +20,22 @@ namespace Smart_Touch_Protocol_Utility
                 var uvCode = uvCodeTextBox.Text;
                 var uvDescrip = uvDescripTextBox.Text;
                 int numTreat = int.Parse(numTreatTextBox.Text);
-                int gpID = AddProtocol.gpID();
+                int gpID = GlobalProtocols.gpID();
 
                 try
                 {
                     if (uvbRadioButton.IsChecked == true)
                     {
-                        AddProtocol.gptUVBTable(gpID, numTreat);
-                        AddProtocol.uvbTreatType(uvCode, uvDescrip);
-                        AddProtocol.uvbGlobalProtocols(uvCode);
+                        GlobalProtocolTreatments.gptUVB(gpID, numTreat);
+                        TreatmentType.uvbTreatType(uvCode, uvDescrip);
+                        GlobalProtocols.uvbGlobalProtocols(uvCode);
                         // AddProtocol.resourceUVBEdit(uvCode, uvDescrip);
                     }
                     else
                     {
-                        AddProtocol.gptUVATable(gpID, numTreat);
-                        AddProtocol.uvaTreatType(uvCode, uvDescrip);
-                        AddProtocol.uvaGlobalProtocols(uvCode);
+                        GlobalProtocolTreatments.gptUVA(gpID, numTreat);
+                        TreatmentType.uvaTreatType(uvCode, uvDescrip);
+                        GlobalProtocols.uvaGlobalProtocols(uvCode);
                         // AddProtocol.resourceUVAEdit(uvCode, uvDescrip);
                     }
                     MessageBox.Show("Protocol has been added.", "Protocol complete");
