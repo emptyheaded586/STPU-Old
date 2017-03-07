@@ -22,7 +22,7 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
                     w.WriteLine("uvatreatmenttypes.uvatreatmenttypedescription." + uvCode + " = " + uvDescrip);
                 }
                 ProcessStartInfo info = new ProcessStartInfo(path + "ResGen.exe");
-                info.Arguments = path + "English.txt ";
+                info.Arguments = "English.txt ";
                 Process.Start(info);
             }
             catch (Exception ex)
@@ -46,7 +46,7 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
                     w.WriteLine("uvbtreatmenttypes.uvbtreatmenttypedescription." + uvCode + " = " + uvDescrip);
                 }
                 ProcessStartInfo info = new ProcessStartInfo(path + "ResGen.exe");
-                info.Arguments = path + "English.txt ";
+                info.Arguments = "English.txt ";
                 Process.Start(info);
             }
             catch (Exception ex)
