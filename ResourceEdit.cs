@@ -1,44 +1,58 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.IO;
+using System.Windows;
 
 namespace Smart_Touch_Protocol_Utility.AddProtocols
 {
     class ResourceEdit
     {
-        // Currently not in use due to needing admin privs to 
-        // make changes to the files.
         public static void resourceUVAEdit(string uvCode, string uvDescrip)
         {
-            string path = @"C:\Program Files (x86)\Daavlin\Smart Touch\Daavlin STUV 4.0\Resources\English.txt";
+            string path = @"C:\Program Files (x86)\Daavlin\Smart Touch\Daavlin STUV 4.0\Resources\";
 
-            using (StreamWriter w = File.AppendText(path))
+            try
             {
-                w.WriteLine("uvatreatmenttypes.uvatreatmenttypedescription." + uvCode + " = " + uvDescrip);
+                using (StreamWriter w = File.AppendText(path + "English.txt"))
+                {
+                    w.WriteLine();
+                    w.WriteLine();
+                    w.WriteLine("; codes for database strings");
+                    w.WriteLine();
+                    w.WriteLine("uvatreatmenttypes.uvatreatmenttypedescription." + uvCode + " = " + uvDescrip);
+                }
+                ProcessStartInfo info = new ProcessStartInfo(path + "ResGen.exe");
+                info.Arguments = path + "English.txt ";
+                Process.Start(info);
             }
-
-            ProcessStartInfo resgen = new ProcessStartInfo();
-            resgen.Verb = "runas";
-            resgen.FileName = @"C:\Program Files (x86)\Daavlin\Smart Touch\Daavlin STUV 4.0\Resources\Resgen.exe";
-            resgen.Arguments = "English.txt";
-            Process.Start(resgen);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        // Currently not in use due to needing admin privs to 
-        // make changes to the files.
         public static void resourceUVBEdit(string uvCode, string uvDescrip)
         {
-            string path = @"C:\Program Files (x86)\Daavlin\Smart Touch\Daavlin STUV 4.0\Resources\English.txt";
+            string path = @"C:\Program Files (x86)\Daavlin\Smart Touch\Daavlin STUV 4.0\Resources\";
 
-            using (StreamWriter w = File.AppendText(path))
+            try
             {
-                w.WriteLine("uvbtreatmenttypes.uvbtreatmenttypedescription." + uvCode + " = " + uvDescrip);
+                using (StreamWriter w = File.AppendText(path + "English.txt"))
+                {
+                    w.WriteLine();
+                    w.WriteLine();
+                    w.WriteLine("; codes for database strings");
+                    w.WriteLine();
+                    w.WriteLine("uvbtreatmenttypes.uvbtreatmenttypedescription." + uvCode + " = " + uvDescrip);
+                }
+                ProcessStartInfo info = new ProcessStartInfo(path + "ResGen.exe");
+                info.Arguments = path + "English.txt ";
+                Process.Start(info);
             }
-
-            ProcessStartInfo resgen = new ProcessStartInfo();
-            resgen.Verb = "runas";
-            resgen.FileName = @"C:\Program Files (x86)\Daavlin\Smart Touch\Daavlin STUV 4.0\Resources\Resgen.exe";
-            resgen.Arguments = "English.txt";
-            Process.Start(resgen);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
