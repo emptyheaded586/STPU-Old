@@ -7,8 +7,8 @@
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_LumenWorks.Framework.IO.dll" Value="..\..\..\..\..\Downloads\CSV Reader\LumenWorks.Framework.IO\bin\Release"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.VisualBasic.dll" Value="..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_SmartTouchProtocolUtility.exe" Value="..\bin\Release"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_SmartTouchProtocolUtility.exe.config" Value="..\bin\Release"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_SmartTouchProtocolUtility.exe" Value="..\bin\Debug"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_SmartTouchProtocolUtility.exe.config" Value="..\bin\Debug"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_LumenWorks.Framework.IO.dll" Value="LumenWorks.Framework.IO.dll"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.VisualBasic.dll" Value="Microsoft.VisualBasic.dll"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_SmartTouchProtocolUtility.exe" Value="Smart Touch Protocol Utility.exe"/>
@@ -49,9 +49,10 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
     <ROW File="AddQuery.txt" Component_="AddQuery.txt" FileName="AddQuery.txt" Attributes="0" SourcePath="..\AddQuery.txt" SelfReg="false" NextFile="DropQuery.txt"/>
-    <ROW File="DropQuery.txt" Component_="AddQuery.txt" FileName="DROPQU~1.TXT|DropQuery.txt" Attributes="0" SourcePath="..\DropQuery.txt" SelfReg="false"/>
+    <ROW File="DropQuery.txt" Component_="AddQuery.txt" FileName="DROPQU~1.TXT|DropQuery.txt" Attributes="0" SourcePath="..\DropQuery.txt" SelfReg="false" NextFile="ResGen.bat"/>
     <ROW File="LumenWorks.Framework.IO.dll" Component_="AI_PROPPATH_FILENAME_PERBUILD_LumenWorks" FileName="LUMENW~1.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_LumenWorks.Framework.IO.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_LumenWorks.Framework.IO.dll&gt;" SelfReg="false" NextFile="Microsoft.VisualBasic.dll"/>
     <ROW File="Microsoft.VisualBasic.dll" Component_="AI_PROPPATH_FILENAME_PERBUILD_LumenWorks" FileName="MICROS~1.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.VisualBasic.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.VisualBasic.dll&gt;" SelfReg="false" NextFile="AddQuery.txt"/>
+    <ROW File="ResGen.bat" Component_="AI_PROPPATH_FILENAME_PERBUILD_LumenWorks" FileName="ResGen.bat" Attributes="0" SourcePath="..\..\..\..\..\Desktop\ResGen.bat" SelfReg="false"/>
     <ROW File="SmartTouchProtocolUtility.exe" Component_="AI_PROPPATH_FILENAME_PERBUILD_SmartTouch" FileName="SMARTT~1.EXE|[|AI_PROPPATH_FILENAME_PERBUILD_SmartTouchProtocolUtility.exe]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_SmartTouchProtocolUtility.exe&gt;" SelfReg="false" NextFile="SmartTouchProtocolUtility.exe.config" DigSign="true"/>
     <ROW File="SmartTouchProtocolUtility.exe.config" Component_="AI_PROPPATH_FILENAME_PERBUILD_LumenWorks" FileName="SMARTT~1.CON|[|AI_PROPPATH_FILENAME_PERBUILD_SmartTouchProtocolUtility.exe.config]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_SmartTouchProtocolUtility.exe.config&gt;" SelfReg="false" NextFile="LumenWorks.Framework.IO.dll"/>
   </COMPONENT>
