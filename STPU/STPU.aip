@@ -18,7 +18,7 @@
     <ROW Property="Manufacturer" Value="Daavlin"/>
     <ROW Property="ProductCode" Value="1033:{7DD47E09-30A1-4E19-A8BE-A174B8D31F43} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
-    <ROW Property="ProductName" Value="Daavlin STPU 1.0"/>
+    <ROW Property="ProductName" Value="Daavlin STPU"/>
     <ROW Property="ProductVersion" Value="1.0.0" Type="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="SmartTouch" Value="C:\Program Files (x86)\Daavlin\Smart Touch\"/>
