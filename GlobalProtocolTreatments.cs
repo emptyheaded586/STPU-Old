@@ -7,6 +7,9 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
 {
     class GlobalProtocolTreatments
     {
+        private static int gpIDLimitNum = 54;
+        private static double dosageMultiplier = .01;
+
         public static void gptUVA(int gpID, int numTreat)
         {
             string sqlConnection = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
@@ -25,7 +28,7 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
             dt.Columns.Add("PrimaryDosage");
             dt.Columns.Add("SecondaryDosage");
 
-            for (int x = gpID; x < (gpID + 54); ++x)
+            for (int x = gpID; x < (gpID + gpIDLimitNum); ++x)
             {
                 for (int i = 0; i < numTreat; ++i)
                 {
@@ -52,11 +55,11 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
             double[] dosage = new double[numTreat];
 
             dosage[0] = (Double.Parse(Microsoft.VisualBasic.Interaction.InputBox("Enter the starting % of MED for treatment #" + (1) +
-                "\nEnter value as a whole number (50% = 50)", "UVB Dosage"))) * .01;
+                "\nEnter value as a whole number (50% = 50)", "UVB Dosage"))) * dosageMultiplier;
             for (int x = 1; x < numTreat; ++x)
             {
                 dosage[x] = (Double.Parse(Microsoft.VisualBasic.Interaction.InputBox("Enter the % increase for treatment #" + (x + 1) +
-                    "\nEnter value as a whole number (10% = 10)", "UVB Dosage"))) * .01;
+                    "\nEnter value as a whole number (10% = 10)", "UVB Dosage"))) * dosageMultiplier;
             }
 
             dt.Columns.Add("GlobalProtocolTreatmentID");
@@ -65,7 +68,7 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
             dt.Columns.Add("PrimaryDosage");
             dt.Columns.Add("SecondaryDosage");
 
-            for (int x = gpID; x < (gpID + 54); ++x)
+            for (int x = gpID; x < (gpID + gpIDLimitNum); ++x)
             {
                 for (int i = 0; i < numTreat; ++i)
                 {
