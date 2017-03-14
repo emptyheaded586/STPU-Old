@@ -29,6 +29,7 @@ namespace Smart_Touch_Protocol_Utility
                         GlobalProtocolTreatments.gptUVB(gpID, numTreat);
                         TreatmentType.uvbTreatType(uvCode, uvDescrip);
                         GlobalProtocols.uvbGlobalProtocols(uvCode);
+                        TreatmentLimits.treatLim(uvCode);
                         ResourceEdit.resourceUVBEdit(uvCode, uvDescrip);
                     }
                     else

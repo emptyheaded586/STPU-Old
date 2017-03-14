@@ -73,6 +73,7 @@
     <Compile Include="GlobalProtocols.cs" />
     <Compile Include="GlobalProtocolTreatments.cs" />
     <Compile Include="ResourceEdit.cs" />
+    <Compile Include="TreatmentLimits.cs" />
     <Compile Include="TreatmentType.cs" />
     <Compile Include="AddProtocolWindow1.xaml.cs">
       <DependentUpon>AddProtocolWindow1.xaml</DependentUpon>
