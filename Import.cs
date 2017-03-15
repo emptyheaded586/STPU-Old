@@ -20,6 +20,7 @@ namespace Smart_Touch_Protocol_Utility
             string addQuery = File.ReadAllText(addPath);
             string dropQuery = File.ReadAllText(dropPath);
 
+            fbd.ShowNewFolderButton = false;
             DialogResult result = fbd.ShowDialog();
             if (result == DialogResult.OK)
             {
