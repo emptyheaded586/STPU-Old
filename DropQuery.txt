@@ -37,3 +37,5 @@ TRUNCATE TABLE UVBTreatmentTypes
 TRUNCATE TABLE GlobalProtocols
 
 TRUNCATE TABLE GlobalProtocolTreatments
+
+TRUNCATE TABLE TreatmentLimits

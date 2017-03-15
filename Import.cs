@@ -73,6 +73,17 @@ namespace Smart_Touch_Protocol_Utility
                     dataTable.Reset();
                 }
 
+                using (CsvReader csv = new CsvReader(new StreamReader(fbd.SelectedPath + @"\TreatmentLimits.csv"), true))
+                {
+                    dataTable.Load(csv);
+                    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(sqlConnection))
+                    {
+                        bulkCopy.DestinationTableName = "dbo.TreatmentLimits";
+                        bulkCopy.WriteToServer(dataTable);
+                    }
+                    dataTable.Reset();
+                }
+
                 cmd.CommandText = addQuery;
                 cmd.ExecuteNonQuery();
                 fbd.Dispose();

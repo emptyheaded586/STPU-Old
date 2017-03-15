@@ -112,6 +112,29 @@ namespace Smart_Touch_Protocol_Utility
                         }
                     }
 
+                    cmd.CommandText = "SELECT * FROM [dbo].[TreatmentLimits]";
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (StreamWriter writer = new StreamWriter(fbd.SelectedPath + @"\TreatmentLimits.csv"))
+                    {
+                        numColumns = reader.FieldCount;
+
+                        for (int x = 0; x < numColumns; ++x)
+                        {
+                            writer.Write(reader.GetName(x));
+                            if (x < (numColumns - 1))
+                            {
+                                writer.Write(",");
+                            }
+                        }
+                        writer.WriteLine();
+                        while (reader.Read())
+                        {
+                            writer.WriteLine("{0},{1},{2},{3},{4}",
+                              reader[0], reader[1], reader[2], reader[3], reader[4]);
+                        }
+                    }
+
                     fbd.Dispose();
                 }
             }
