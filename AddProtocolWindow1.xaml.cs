@@ -63,5 +63,10 @@ namespace Smart_Touch_Protocol_Utility
             if (!char.IsDigit(e.Text, e.Text.Length - 1))
                 e.Handled = true;
         }
+
+        private void cancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

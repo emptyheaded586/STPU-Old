@@ -16,7 +16,6 @@ namespace Smart_Touch_Protocol_Utility
             try
             {
                 Import.importTables();
-                MessageBox.Show("Import Complete", "Import");
             }
             catch (SqlException ex)
             {
@@ -33,7 +32,6 @@ namespace Smart_Touch_Protocol_Utility
             try
             {
                 Export.exportTables();
-                MessageBox.Show("Export Complete", "Export");
             }
             catch (SqlException ex)
             {

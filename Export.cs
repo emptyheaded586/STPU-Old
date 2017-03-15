@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 using System.Configuration;
+using System;
 
 namespace Smart_Touch_Protocol_Utility
 {
@@ -11,132 +12,141 @@ namespace Smart_Touch_Protocol_Utility
         {
             string sqlConnection = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             FolderBrowserDialog fbd = new FolderBrowserDialog();
-            fbd.ShowDialog();
 
-            using (SqlConnection connect = new SqlConnection(sqlConnection))
+            fbd.ShowNewFolderButton = false;
+            DialogResult result = fbd.ShowDialog();
+            if (result == DialogResult.OK)
             {
-                int numColumns;
-                string queryStatement = "SELECT * FROM [dbo].[GlobalProtocols]";
-
-                using (SqlCommand cmd = new SqlCommand(queryStatement, connect))
+                using (SqlConnection connect = new SqlConnection(sqlConnection))
                 {
-                    connect.Open();
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    using (StreamWriter writer = new StreamWriter(fbd.SelectedPath + @"\GlobalProtocols.csv"))
-                    {
-                        numColumns = reader.FieldCount;
+                    int numColumns;
+                    string queryStatement = "SELECT * FROM [dbo].[GlobalProtocols]";
 
-                        for (int x = 0; x < numColumns; ++x)
+                    using (SqlCommand cmd = new SqlCommand(queryStatement, connect))
+                    {
+                        connect.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        using (StreamWriter writer = new StreamWriter(fbd.SelectedPath + @"\GlobalProtocols.csv"))
                         {
-                            writer.Write(reader.GetName(x));
-                            if (x < (numColumns - 1))
+                            numColumns = reader.FieldCount;
+
+                            for (int x = 0; x < numColumns; ++x)
                             {
-                                writer.Write(",");
+                                writer.Write(reader.GetName(x));
+                                if (x < (numColumns - 1))
+                                {
+                                    writer.Write(",");
+                                }
+                            }
+                            writer.WriteLine();
+                            while (reader.Read())
+                            {
+                                writer.WriteLine("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9}",
+                                  reader[0], reader[1], reader[2], reader[3], reader[4],
+                                  reader[5], reader[6], reader[7], reader[8], reader[9]);
                             }
                         }
-                        writer.WriteLine();
-                        while (reader.Read())
+
+                        cmd.CommandText = "SELECT * FROM [dbo].[GlobalProtocolTreatments]";
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        using (StreamWriter writer = new StreamWriter(fbd.SelectedPath + @"\GlobalProtocolTreatments.csv"))
                         {
-                            writer.WriteLine("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9}",
-                              reader[0], reader[1], reader[2], reader[3], reader[4],
-                              reader[5], reader[6], reader[7], reader[8], reader[9]);
-                        }
-                    }
+                            numColumns = reader.FieldCount;
 
-                    cmd.CommandText = "SELECT * FROM [dbo].[GlobalProtocolTreatments]";
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    using (StreamWriter writer = new StreamWriter(fbd.SelectedPath + @"\GlobalProtocolTreatments.csv"))
-                    {
-                        numColumns = reader.FieldCount;
-
-                        for (int x = 0; x < numColumns; ++x)
-                        {
-                            writer.Write(reader.GetName(x));
-                            if (x < (numColumns - 1))
+                            for (int x = 0; x < numColumns; ++x)
                             {
-                                writer.Write(",");
+                                writer.Write(reader.GetName(x));
+                                if (x < (numColumns - 1))
+                                {
+                                    writer.Write(",");
+                                }
+                            }
+                            writer.WriteLine();
+                            while (reader.Read())
+                            {
+                                writer.WriteLine("{0},{1},{2},{3},{4}",
+                                  reader[0], reader[1], reader[2], reader[3], reader[4]);
                             }
                         }
-                        writer.WriteLine();
-                        while (reader.Read())
+
+                        cmd.CommandText = "SELECT * FROM [dbo].[UVATreatmentTypes]";
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        using (StreamWriter writer = new StreamWriter(fbd.SelectedPath + @"\UVATreatmentTypes.csv"))
                         {
-                            writer.WriteLine("{0},{1},{2},{3},{4}",
-                              reader[0], reader[1], reader[2], reader[3], reader[4]);
-                        }
-                    }
+                            numColumns = reader.FieldCount;
 
-                    cmd.CommandText = "SELECT * FROM [dbo].[UVATreatmentTypes]";
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    using (StreamWriter writer = new StreamWriter(fbd.SelectedPath + @"\UVATreatmentTypes.csv"))
-                    {
-                        numColumns = reader.FieldCount;
-
-                        for (int x = 0; x < numColumns; ++x)
-                        {
-                            writer.Write(reader.GetName(x));
-                            if (x < (numColumns - 1))
+                            for (int x = 0; x < numColumns; ++x)
                             {
-                                writer.Write(",");
+                                writer.Write(reader.GetName(x));
+                                if (x < (numColumns - 1))
+                                {
+                                    writer.Write(",");
+                                }
+                            }
+                            writer.WriteLine();
+                            while (reader.Read())
+                            {
+                                writer.WriteLine("{0},{1}",
+                                  reader[0], reader[1]);
                             }
                         }
-                        writer.WriteLine();
-                        while (reader.Read())
+
+                        cmd.CommandText = "SELECT * FROM [dbo].[UVBTreatmentTypes]";
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        using (StreamWriter writer = new StreamWriter(fbd.SelectedPath + @"\UVBTreatmentTypes.csv"))
                         {
-                            writer.WriteLine("{0},{1}",
-                              reader[0], reader[1]);
-                        }
-                    }
+                            numColumns = reader.FieldCount;
 
-                    cmd.CommandText = "SELECT * FROM [dbo].[UVBTreatmentTypes]";
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    using (StreamWriter writer = new StreamWriter(fbd.SelectedPath + @"\UVBTreatmentTypes.csv"))
-                    {
-                        numColumns = reader.FieldCount;
-
-                        for (int x = 0; x < numColumns; ++x)
-                        {
-                            writer.Write(reader.GetName(x));
-                            if (x < (numColumns - 1))
+                            for (int x = 0; x < numColumns; ++x)
                             {
-                                writer.Write(",");
+                                writer.Write(reader.GetName(x));
+                                if (x < (numColumns - 1))
+                                {
+                                    writer.Write(",");
+                                }
+                            }
+                            writer.WriteLine();
+                            while (reader.Read())
+                            {
+                                writer.WriteLine("{0},{1}",
+                                  reader[0], reader[1]);
                             }
                         }
-                        writer.WriteLine();
-                        while (reader.Read())
+
+                        cmd.CommandText = "SELECT * FROM [dbo].[TreatmentLimits]";
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        using (StreamWriter writer = new StreamWriter(fbd.SelectedPath + @"\TreatmentLimits.csv"))
                         {
-                            writer.WriteLine("{0},{1}",
-                              reader[0], reader[1]);
-                        }
-                    }
+                            numColumns = reader.FieldCount;
 
-                    cmd.CommandText = "SELECT * FROM [dbo].[TreatmentLimits]";
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    using (StreamWriter writer = new StreamWriter(fbd.SelectedPath + @"\TreatmentLimits.csv"))
-                    {
-                        numColumns = reader.FieldCount;
-
-                        for (int x = 0; x < numColumns; ++x)
-                        {
-                            writer.Write(reader.GetName(x));
-                            if (x < (numColumns - 1))
+                            for (int x = 0; x < numColumns; ++x)
                             {
-                                writer.Write(",");
+                                writer.Write(reader.GetName(x));
+                                if (x < (numColumns - 1))
+                                {
+                                    writer.Write(",");
+                                }
+                            }
+                            writer.WriteLine();
+                            while (reader.Read())
+                            {
+                                writer.WriteLine("{0},{1},{2},{3},{4}",
+                                  reader[0], reader[1], reader[2], reader[3], reader[4]);
                             }
                         }
-                        writer.WriteLine();
-                        while (reader.Read())
-                        {
-                            writer.WriteLine("{0},{1},{2},{3},{4}",
-                              reader[0], reader[1], reader[2], reader[3], reader[4]);
-                        }
+                        fbd.Dispose();
+                        MessageBox.Show("Export Complete", "Export");
                     }
-
-                    fbd.Dispose();
                 }
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                fbd.Dispose();
+                return;
             }
         }
     }

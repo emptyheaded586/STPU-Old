@@ -20,73 +20,82 @@ namespace Smart_Touch_Protocol_Utility
             string addQuery = File.ReadAllText(addPath);
             string dropQuery = File.ReadAllText(dropPath);
 
-            fbd.ShowDialog();
-            using (SqlConnection connect = new SqlConnection(sqlConnection))
-            using (SqlCommand cmd = new SqlCommand())
+            DialogResult result = fbd.ShowDialog();
+            if (result == DialogResult.OK)
             {
-                cmd.Connection = connect;
-                cmd.CommandText = dropQuery;
-                connect.Open();
-                cmd.ExecuteNonQuery();
-
-                using (CsvReader csv = new CsvReader(new StreamReader(fbd.SelectedPath + @"\GlobalProtocols.csv"), true))
+                using (SqlConnection connect = new SqlConnection(sqlConnection))
+                using (SqlCommand cmd = new SqlCommand())
                 {
-                    dataTable.Load(csv);
-                    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(sqlConnection))
-                    {
-                        bulkCopy.DestinationTableName = "dbo.GlobalProtocols";
-                        bulkCopy.WriteToServer(dataTable);
-                    }
-                    dataTable.Reset();
-                }
+                    cmd.Connection = connect;
+                    cmd.CommandText = dropQuery;
+                    connect.Open();
+                    cmd.ExecuteNonQuery();
 
-                using (CsvReader csv = new CsvReader(new StreamReader(fbd.SelectedPath + @"\GlobalProtocolTreatments.csv"), true))
-                {
-                    dataTable.Load(csv);
-                    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(sqlConnection))
+                    using (CsvReader csv = new CsvReader(new StreamReader(fbd.SelectedPath + @"\GlobalProtocols.csv"), true))
                     {
-                        bulkCopy.DestinationTableName = "dbo.GlobalProtocolTreatments";
-                        bulkCopy.WriteToServer(dataTable);
+                        dataTable.Load(csv);
+                        using (SqlBulkCopy bulkCopy = new SqlBulkCopy(sqlConnection))
+                        {
+                            bulkCopy.DestinationTableName = "dbo.GlobalProtocols";
+                            bulkCopy.WriteToServer(dataTable);
+                        }
+                        dataTable.Reset();
                     }
-                    dataTable.Reset();
-                }
 
-                using (CsvReader csv = new CsvReader(new StreamReader(fbd.SelectedPath + @"\UVATreatmentTypes.csv"), true))
-                {
-                    dataTable.Load(csv);
-                    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(sqlConnection))
+                    using (CsvReader csv = new CsvReader(new StreamReader(fbd.SelectedPath + @"\GlobalProtocolTreatments.csv"), true))
                     {
-                        bulkCopy.DestinationTableName = "dbo.UVATreatmentTypes";
-                        bulkCopy.WriteToServer(dataTable);
+                        dataTable.Load(csv);
+                        using (SqlBulkCopy bulkCopy = new SqlBulkCopy(sqlConnection))
+                        {
+                            bulkCopy.DestinationTableName = "dbo.GlobalProtocolTreatments";
+                            bulkCopy.WriteToServer(dataTable);
+                        }
+                        dataTable.Reset();
                     }
-                    dataTable.Reset();
-                }
 
-                using (CsvReader csv = new CsvReader(new StreamReader(fbd.SelectedPath + @"\UVBTreatmentTypes.csv"), true))
-                {
-                    dataTable.Load(csv);
-                    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(sqlConnection))
+                    using (CsvReader csv = new CsvReader(new StreamReader(fbd.SelectedPath + @"\UVATreatmentTypes.csv"), true))
                     {
-                        bulkCopy.DestinationTableName = "dbo.UVBTreatmentTypes";
-                        bulkCopy.WriteToServer(dataTable);
+                        dataTable.Load(csv);
+                        using (SqlBulkCopy bulkCopy = new SqlBulkCopy(sqlConnection))
+                        {
+                            bulkCopy.DestinationTableName = "dbo.UVATreatmentTypes";
+                            bulkCopy.WriteToServer(dataTable);
+                        }
+                        dataTable.Reset();
                     }
-                    dataTable.Reset();
-                }
 
-                using (CsvReader csv = new CsvReader(new StreamReader(fbd.SelectedPath + @"\TreatmentLimits.csv"), true))
-                {
-                    dataTable.Load(csv);
-                    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(sqlConnection))
+                    using (CsvReader csv = new CsvReader(new StreamReader(fbd.SelectedPath + @"\UVBTreatmentTypes.csv"), true))
                     {
-                        bulkCopy.DestinationTableName = "dbo.TreatmentLimits";
-                        bulkCopy.WriteToServer(dataTable);
+                        dataTable.Load(csv);
+                        using (SqlBulkCopy bulkCopy = new SqlBulkCopy(sqlConnection))
+                        {
+                            bulkCopy.DestinationTableName = "dbo.UVBTreatmentTypes";
+                            bulkCopy.WriteToServer(dataTable);
+                        }
+                        dataTable.Reset();
                     }
-                    dataTable.Reset();
-                }
 
-                cmd.CommandText = addQuery;
-                cmd.ExecuteNonQuery();
+                    using (CsvReader csv = new CsvReader(new StreamReader(fbd.SelectedPath + @"\TreatmentLimits.csv"), true))
+                    {
+                        dataTable.Load(csv);
+                        using (SqlBulkCopy bulkCopy = new SqlBulkCopy(sqlConnection))
+                        {
+                            bulkCopy.DestinationTableName = "dbo.TreatmentLimits";
+                            bulkCopy.WriteToServer(dataTable);
+                        }
+                        dataTable.Reset();
+                    }
+
+                    cmd.CommandText = addQuery;
+                    cmd.ExecuteNonQuery();
+                    fbd.Dispose();
+                    MessageBox.Show("Import Complete", "Import");
+                }
+            }
+            else if (result == DialogResult.Cancel)
+            {
                 fbd.Dispose();
+                return;
             }
         }
     }
