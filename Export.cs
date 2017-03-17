@@ -12,8 +12,7 @@ namespace Smart_Touch_Protocol_Utility
         {
             string sqlConnection = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             FolderBrowserDialog fbd = new FolderBrowserDialog();
-
-            fbd.ShowNewFolderButton = false;
+            
             DialogResult result = fbd.ShowDialog();
             if (result == DialogResult.OK)
             {

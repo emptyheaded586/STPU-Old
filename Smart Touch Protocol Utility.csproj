@@ -66,10 +66,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="DosageAmounts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="DosageAmounts.xaml.cs">
+      <DependentUpon>DosageAmounts.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GlobalProtocols.cs" />
     <Compile Include="GlobalProtocolTreatments.cs" />
     <Compile Include="ResourceEdit.cs" />

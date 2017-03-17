@@ -16,7 +16,9 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
             DataTable dt = new DataTable();
             DataRow row;
             double[] dosage = new double[numTreat];
+            DosageAmounts win = new DosageAmounts(numTreat);
 
+            win.ShowDialog();
             for (int x = 0; x < numTreat; ++x)
             {
                 dosage[x] = Double.Parse(Microsoft.VisualBasic.Interaction.InputBox("Enter dosage amount for treatment #" + (x + 1), "UVA Dosage"));
