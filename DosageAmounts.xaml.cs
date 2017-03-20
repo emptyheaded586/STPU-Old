@@ -7,6 +7,7 @@ namespace Smart_Touch_Protocol_Utility
     public partial class DosageAmounts : Window
     {
         private int numTreat;
+        private static DataTable dt;
 
         public DosageAmounts()
         {
@@ -22,7 +23,7 @@ namespace Smart_Touch_Protocol_Utility
 
         private DataTable BindTable()
         {
-            DataTable dt = new DataTable();
+            dt = new DataTable();
             dt.Columns.Add(new DataColumn("numTreat", Type.GetType("System.String")));
             dt.Columns.Add(new DataColumn("doseAmt", Type.GetType("System.Double")));
 
@@ -39,7 +40,12 @@ namespace Smart_Touch_Protocol_Utility
 
         private void doneButton_Click(object sender, RoutedEventArgs e)
         {
+            Close();
+        }
 
+        public static DataTable getTable()
+        {
+            return dt;
         }
     }
 }

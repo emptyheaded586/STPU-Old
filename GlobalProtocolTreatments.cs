@@ -15,14 +15,10 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
             string sqlConnection = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             DataTable dt = new DataTable();
             DataRow row;
-            double[] dosage = new double[numTreat];
-            DosageAmounts win = new DosageAmounts(numTreat);
+            DosageAmounts doseWindow = new DosageAmounts(numTreat);
 
-            win.ShowDialog();
-            for (int x = 0; x < numTreat; ++x)
-            {
-                dosage[x] = Double.Parse(Microsoft.VisualBasic.Interaction.InputBox("Enter dosage amount for treatment #" + (x + 1), "UVA Dosage"));
-            }
+            doseWindow.ShowDialog();
+            DataTable doseTable = DosageAmounts.getTable();
 
             dt.Columns.Add("GlobalProtocolTreatmentID");
             dt.Columns.Add("GlobalProtocolID");
@@ -37,7 +33,7 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
                     row = dt.NewRow();
                     row[1] = x;
                     row[2] = i + 1;
-                    row[3] = dosage[i];
+                    row[3] = doseTable.Rows[i][1].ToString();
                     row[4] = 0;
                     dt.Rows.Add(row);
                 }
@@ -54,15 +50,10 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
             string sqlConnection = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             DataTable dt = new DataTable();
             DataRow row;
-            double[] dosage = new double[numTreat];
+            DosageAmounts doseWindow = new DosageAmounts(numTreat);
 
-            dosage[0] = (Double.Parse(Microsoft.VisualBasic.Interaction.InputBox("Enter the starting % of MED for treatment #" + (1) +
-                "\nEnter value as a whole number (50% = 50)", "UVB Dosage"))) * dosageMultiplier;
-            for (int x = 1; x < numTreat; ++x)
-            {
-                dosage[x] = (Double.Parse(Microsoft.VisualBasic.Interaction.InputBox("Enter the % increase for treatment #" + (x + 1) +
-                    "\nEnter value as a whole number (10% = 10)", "UVB Dosage"))) * dosageMultiplier;
-            }
+            doseWindow.ShowDialog();
+            DataTable doseTable = DosageAmounts.getTable();
 
             dt.Columns.Add("GlobalProtocolTreatmentID");
             dt.Columns.Add("GlobalProtocolID");
@@ -77,7 +68,7 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
                     row = dt.NewRow();
                     row[1] = x;
                     row[2] = i + 1;
-                    row[3] = dosage[i];
+                    row[3] = Double.Parse(doseTable.Rows[i][1].ToString()) * dosageMultiplier;
                     row[4] = 0;
                     dt.Rows.Add(row);
                 }
