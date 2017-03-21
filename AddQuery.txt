@@ -1,5 +1,3 @@
-USE STUV4_0
-
 ALTER TABLE PatientActuals
 ADD CONSTRAINT FK_PatientActuals_UVATreatmentTypes
 FOREIGN KEY (UVATreatmentTypeCode)

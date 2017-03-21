@@ -1,5 +1,3 @@
-USE STUV4_0
-
 ALTER TABLE PatientActuals
 DROP CONSTRAINT FK_PatientActuals_UVATreatmentTypes,
 FK_PatientActuals_UVBTreatmentTypes
