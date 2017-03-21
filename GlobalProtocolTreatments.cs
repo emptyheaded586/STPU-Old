@@ -18,7 +18,7 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
             DosageAmounts doseWindow = new DosageAmounts(numTreat);
 
             doseWindow.ShowDialog();
-            DataTable doseTable = DosageAmounts.getTable();
+            DataTable doseTable = DosageAmounts.userDoses;
 
             dt.Columns.Add("GlobalProtocolTreatmentID");
             dt.Columns.Add("GlobalProtocolID");
@@ -53,7 +53,7 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
             DosageAmounts doseWindow = new DosageAmounts(numTreat);
 
             doseWindow.ShowDialog();
-            DataTable doseTable = DosageAmounts.getTable();
+            DataTable doseTable = DosageAmounts.userDoses;
 
             dt.Columns.Add("GlobalProtocolTreatmentID");
             dt.Columns.Add("GlobalProtocolID");
