@@ -15,10 +15,8 @@ namespace Smart_Touch_Protocol_Utility
             string sqlConnection = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             var dataTable = new DataTable();
-            string addPath = Path.Combine(Environment.CurrentDirectory, @"Queries\", "AddQuery.txt");
-            string dropPath = Path.Combine(Environment.CurrentDirectory, @"Queries\", "DropQuery.txt");
-            string addQuery = File.ReadAllText(addPath);
-            string dropQuery = File.ReadAllText(dropPath);
+            string addQuery = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, @"Queries\", "AddQuery.txt"));
+            string dropQuery = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, @"Queries\", "DropQuery.txt"));
 
             fbd.ShowNewFolderButton = false;
             DialogResult result = fbd.ShowDialog();
