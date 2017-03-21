@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Smart_Touch_Protocol_Utility"
         mc:Ignorable="d"
-        Title="Smart Touch Protocol Utility" Height="350" Width="525" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Smart Touch Protocol Utility" Height="155" Width="200" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button x:Name="importButton" Content="Import" Click="importButton_Click" HorizontalAlignment="Left" Margin="154,79,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button x:Name="exportButton" Content="Export" Click="exportButton_Click" HorizontalAlignment="Left" Margin="278,79,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button x:Name="AddProtocolButton" Content="Add Protocol" Click="AddProtocolButton_Click" HorizontalAlignment="Left" Margin="154,104,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button x:Name="ModifyButton" Content="Modify Protocol" Click="ModifyButton_Click" HorizontalAlignment="Left" Margin="278,104,0,0" VerticalAlignment="Top" Width="100" IsEnabled="False"/>
+        <Button x:Name="importButton" Content="Import" Click="importButton_Click" Margin="10,10,12,0" Height="22" VerticalAlignment="Top"/>
+        <Button x:Name="exportButton" Content="Export" Click="exportButton_Click" Margin="10,35,12,0" Height="22" VerticalAlignment="Top"/>
+        <Button x:Name="AddProtocolButton" Content="Add Protocol" Click="AddProtocolButton_Click" Margin="10,60,12,0" Height="22" VerticalAlignment="Top"/>
+        <Button x:Name="ModifyButton" Content="Modify Protocol" Click="ModifyButton_Click" Margin="10,85,12,0" IsEnabled="False" Height="22" VerticalAlignment="Top"/>
     </Grid>
 </Window>
