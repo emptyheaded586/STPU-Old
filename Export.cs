@@ -2,7 +2,6 @@
 using System.IO;
 using System.Windows.Forms;
 using System.Configuration;
-using System;
 
 namespace Smart_Touch_Protocol_Utility
 {
