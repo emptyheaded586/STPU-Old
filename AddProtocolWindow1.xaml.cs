@@ -46,6 +46,10 @@ namespace Smart_Touch_Protocol_Utility
                 {
                     MessageBox.Show(ex.Message);
                 }
+                catch (InvalidOperationException ex)
+                {
+                    MessageBox.Show("Some treatments did not have a dosage amount, please fill in all treatment values.\n\n" + ex.Message);
+                }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
