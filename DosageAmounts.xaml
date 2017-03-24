@@ -7,17 +7,21 @@
         mc:Ignorable="d"
         Title="Dosage Amounts" Height="300" Width="377">
     <Grid>
-        <DataGrid x:Name="dosageAmts" AutoGenerateColumns="False" AlternatingRowBackground="AliceBlue" Margin="10,10,10,111">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="21*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="dosageAmts" AutoGenerateColumns="False" AlternatingRowBackground="AliceBlue" Margin="10,10,10,111" Grid.ColumnSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding numTreat}" Header="Treatment Number" IsReadOnly="True" CanUserResize="False" CanUserSort="False" CanUserReorder="False" Width="*"/>
                 <DataGridTextColumn Binding="{Binding doseAmt}" Header="Dosage Amount" CanUserResize="False" CanUserSort="False" CanUserReorder="False" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="doneButton" Content="Done" Click="doneButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10"  Width="75"/>
-        <TextBlock x:Name="uvaTextBlock" HorizontalAlignment="Left" Margin="10,163,10,0" TextWrapping="Wrap" 
-                   Text="* UVA dosage amounts should be entered as the dosage of Joules (e.g. 2.5 would be entered for 2.5 J)." FontSize="8" VerticalAlignment="Top"/>
-        <TextBlock x:Name="uvbTextBlock" HorizontalAlignment="Left" Margin="10,189,10,0" TextWrapping="Wrap" 
+        <Button x:Name="doneButton" Content="Done" Click="doneButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="147,0,147,10"  Width="75" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="uvaTextBlock" HorizontalAlignment="Left" Margin="10,0,10,85" TextWrapping="Wrap" 
+                   Text="* UVA dosage amounts should be entered as the dosage of Joules (e.g. 2.5 would be entered for 2.5 J)." FontSize="8" Grid.ColumnSpan="2" Height="21" VerticalAlignment="Bottom"/>
+        <TextBlock x:Name="uvbTextBlock" HorizontalAlignment="Left" Margin="10,0,10,48" TextWrapping="Wrap" 
                    Text="** UVB Treatment #1 should be entered as a % of the MED value (e.g. 70% of the MED value would be entered as 70). Every treatment after #1 will be entered as a % increase of the previous treatment (e.g. 10 would be entered for a 10% increase from treatment #1)." 
-                   FontSize="8" VerticalAlignment="Top"/>
+                   FontSize="8" Height="32" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>
