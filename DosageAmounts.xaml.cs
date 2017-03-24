@@ -32,7 +32,7 @@ namespace Smart_Touch_Protocol_Utility
                 DataRow row = null;
                 row = userDoses.NewRow();
                 row["numTreat"] = "Treatment number # " + (x + 1);
-                row["doseAmt"] = 0;
+                row["doseAmt"] = DBNull.Value;
                 userDoses.Rows.Add(row);
             }
             return userDoses;
