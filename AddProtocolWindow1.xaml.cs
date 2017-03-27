@@ -50,6 +50,10 @@ namespace Smart_Touch_Protocol_Utility
                 {
                     MessageBox.Show("Some treatments did not have a dosage amount, please fill in all treatment values.\n\n" + ex.Message);
                 }
+                catch (FormatException ex)
+                {
+                    MessageBox.Show("Please verify all treatment values were entered.\n\n" + ex.Message);
+                }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
