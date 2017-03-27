@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Smart_Touch_Protocol_Utility"
         mc:Ignorable="d"
-        Title="Dosage Amounts" Height="300" Width="377">
+        Title="Dosage Amounts" Height="300" Width="377" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20*"/>
