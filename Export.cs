@@ -49,7 +49,7 @@ namespace Smart_Touch_Protocol_Utility
                                   reader[5], reader[6], reader[7], reader[8], reader[9]);
                             }
                         }
-
+                        #region GlobalProtocolTreatments
                         cmd.CommandText = "SELECT * FROM [dbo].[GlobalProtocolTreatments]";
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
@@ -72,7 +72,8 @@ namespace Smart_Touch_Protocol_Utility
                                   reader[0], reader[1], reader[2], reader[3], reader[4]);
                             }
                         }
-
+                        #endregion
+                        #region UVATreatmentTypes
                         cmd.CommandText = "SELECT * FROM [dbo].[UVATreatmentTypes]";
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
@@ -95,7 +96,8 @@ namespace Smart_Touch_Protocol_Utility
                                   reader[0], reader[1]);
                             }
                         }
-
+                        #endregion
+                        #region UVBTreatmentTypes
                         cmd.CommandText = "SELECT * FROM [dbo].[UVBTreatmentTypes]";
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
@@ -118,7 +120,8 @@ namespace Smart_Touch_Protocol_Utility
                                   reader[0], reader[1]);
                             }
                         }
-
+                        #endregion
+                        #region TreatmentLimits
                         cmd.CommandText = "SELECT * FROM [dbo].[TreatmentLimits]";
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
@@ -141,6 +144,8 @@ namespace Smart_Touch_Protocol_Utility
                                   reader[0], reader[1], reader[2], reader[3], reader[4]);
                             }
                         }
+                        #endregion
+
                         fbd.Dispose();
                         MessageBox.Show("Export Complete", "Export");
                     }
