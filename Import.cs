@@ -25,15 +25,21 @@ namespace Smart_Touch_Protocol_Utility
                 using (SqlConnection connect = new SqlConnection(sqlConnection))
                 using (SqlCommand cmd = new SqlCommand())
                 {
+                    // Checks to verify if the files are located at the selected location
                     if (File.Exists(fbd.SelectedPath + @"\GlobalProtocols.csv") && File.Exists(fbd.SelectedPath + @"\GlobalProtocolTreatments.csv") &&
                         File.Exists(fbd.SelectedPath + @"\UVATreatmentTypes.csv") && File.Exists(fbd.SelectedPath + @"\UVBTreatmentTypes.csv") && 
                         File.Exists(fbd.SelectedPath + @"\TreatmentLimits.csv"))
                     {
+                        // SqlCommand was written this way as it would not work when placed in the 
+                        // using statement above.
                         cmd.Connection = connect;
+                        // DropQuery.txt removes all relationships between tables and then truncates all tables.
                         cmd.CommandText = dropQuery;
                         connect.Open();
                         cmd.ExecuteNonQuery();
 
+                        // Opens the selected .csv files and loads into a dataTable which is then bulkCopy'd into
+                        // the corresponding database. dataTable is then reset and cleared of all data.
                         using (CsvReader csv = new CsvReader(new StreamReader(fbd.SelectedPath + @"\GlobalProtocols.csv"), true))
                         {
                             dataTable.Load(csv);
@@ -88,7 +94,7 @@ namespace Smart_Touch_Protocol_Utility
                             }
                             dataTable.Reset();
                         }
-
+                        // AddQuery.txt replaces all the original relationships between tables.
                         cmd.CommandText = addQuery;
                         cmd.ExecuteNonQuery();
                         fbd.Dispose();

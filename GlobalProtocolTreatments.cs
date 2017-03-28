@@ -15,19 +15,23 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
             string sqlConnection = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             DataTable dt = new DataTable();
             DataRow row;
+            // Creates a new DosageAmounts window with the user defined number of treatments.
             DosageAmounts doseWindow = new DosageAmounts(numTreat);
 
             doseWindow.ShowDialog();
             DataTable doseTable = DosageAmounts.userDoses;
 
+            // Replicates the dataTable from the database.
             dt.Columns.Add("GlobalProtocolTreatmentID");
             dt.Columns.Add("GlobalProtocolID");
             dt.Columns.Add("TreatmentNumber");
             dt.Columns.Add("PrimaryDosage");
             dt.Columns.Add("SecondaryDosage");
 
+            // Outside loop to go through each unique ID for each treatment within a certain limit.
             for (int x = gpID; x < (gpID + gpIDLimitNum); ++x)
             {
+                // Nested loop to enter required information into dataTable a specific amount of times.
                 for (int i = 0; i < numTreat; ++i)
                 {
                     row = dt.NewRow();

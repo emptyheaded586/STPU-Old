@@ -26,8 +26,11 @@ namespace Smart_Touch_Protocol_Utility
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         using (StreamWriter writer = new StreamWriter(fbd.SelectedPath + @"\GlobalProtocols.csv"))
                         {
+                            // Counts the number of columns in the selected database.
                             numColumns = reader.FieldCount;
-
+                            
+                            // Gets the header name of each column and writes to file placing a comma
+                            // after each header except the last one.
                             for (int x = 0; x < numColumns; ++x)
                             {
                                 writer.Write(reader.GetName(x));
@@ -37,6 +40,8 @@ namespace Smart_Touch_Protocol_Utility
                                 }
                             }
                             writer.WriteLine();
+
+                            // Reads through the database rows and columns entering data into .csv file.
                             while (reader.Read())
                             {
                                 writer.WriteLine("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9}",

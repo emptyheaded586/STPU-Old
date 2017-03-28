@@ -6,6 +6,8 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
 {
     class TreatmentLimits
     {
+        // Gets the UVBH treatment limits to set as the new default limits for any user
+        // defined protocols. 
         public static void treatLim(string uvCode)
         {
             string sqlConnection = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;

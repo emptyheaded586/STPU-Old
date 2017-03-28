@@ -5,6 +5,7 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
 {
     class TreatmentType
     {
+        // Adds the user entered Code and Description to the corresponding databases.
         public static void uvaTreatType(string uvCode, string uvDescription)
         {
             string sqlConnection = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
@@ -22,6 +23,7 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
             }
         }
 
+        // Adds the user entered Code and Description to the corresponding databases.
         public static void uvbTreatType(string uvCode, string uvDescription)
         {
             string sqlConnection = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;

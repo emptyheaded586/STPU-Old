@@ -21,6 +21,8 @@ namespace Smart_Touch_Protocol_Utility
             this.dosageAmts.ItemsSource = this.BindTable().DefaultView;
         }
 
+        // Creates the table with the user defined number of treatments and binds
+        // the table to reflect changes made within the window to the dataTable.
         private DataTable BindTable()
         {
             userDoses = new DataTable();

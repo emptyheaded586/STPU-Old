@@ -7,6 +7,8 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
 {
     class ResourceEdit
     {
+        // Modifies the .txt and .resource files located within STUV to allow user defined protocol
+        // to appear within STUV with the proper code and description.
         public static void resourceUVAEdit(string uvCode, string uvDescrip)
         {
             string path = @"C:\Program Files (x86)\Daavlin\Smart Touch\Daavlin STUV 4.0\Resources\";
