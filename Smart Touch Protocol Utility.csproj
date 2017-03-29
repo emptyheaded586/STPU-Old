@@ -38,6 +38,9 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>DaavlinSmartTouch.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="LumenWorks.Framework.IO">
       <HintPath>..\..\..\..\Downloads\CSV Reader\LumenWorks.Framework.IO\bin\Release\LumenWorks.Framework.IO.dll</HintPath>
@@ -133,6 +136,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Queries\DropQuery.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DaavlinSmartTouch.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

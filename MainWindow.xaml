@@ -5,11 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Smart_Touch_Protocol_Utility"
         mc:Ignorable="d"
-        Title="STPU" Height="155" Width="200" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="STPU" Height="155" Width="200" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="C:\Users\kparliment\Desktop\Sysprep Setup\DaavlinSmartTouch.ico">
     <Grid>
-        <Button x:Name="importButton" Content="Import" Click="importButton_Click" Margin="10,10,12,0" Height="22" VerticalAlignment="Top"/>
-        <Button x:Name="exportButton" Content="Export" Click="exportButton_Click" Margin="10,35,12,0" Height="22" VerticalAlignment="Top"/>
-        <Button x:Name="AddProtocolButton" Content="Add Protocol" Click="AddProtocolButton_Click" Margin="10,60,12,0" Height="22" VerticalAlignment="Top"/>
+        <Button x:Name="importButton" Click="importButton_Click" Margin="10,10,12,0" Height="22" VerticalAlignment="Top">
+            <WrapPanel>
+                <Image Source="C:\Users\kparliment\Downloads\import\Import_Icon_64.png" Height="14" Width="21"/>
+                <TextBlock>Import</TextBlock>
+            </WrapPanel>
+        </Button>
+        <Button x:Name="exportButton" Click="exportButton_Click" Margin="10,35,12,0" Height="22" VerticalAlignment="Top">
+            <WrapPanel>
+                <Image Source="C:\Users\kparliment\Downloads\export\Export_Icon_64.png" Height="14" Width="21"/>
+                <TextBlock>Export</TextBlock>
+            </WrapPanel>
+        </Button>
+        <Button x:Name="AddProtocolButton" Click="AddProtocolButton_Click" Margin="10,60,12,0" Height="22" VerticalAlignment="Top">
+            <WrapPanel>
+                <Image Source="C:\Users\kparliment\Downloads\Add\add2.ico" Height="14" Width="21"/>
+                <TextBlock>Add Protocol</TextBlock>
+            </WrapPanel>
+        </Button>
         <Button x:Name="ModifyButton" Content="Modify Protocol" Click="ModifyButton_Click" Margin="10,85,12,0" IsEnabled="False" Height="22" VerticalAlignment="Top"/>
     </Grid>
 </Window>
