@@ -10,6 +10,11 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
         private static int gpIDLimitNum = 54;
         private static double dosageMultiplier = .01;
 
+        /// <summary>
+        /// User defined UVA Global Protocol Treatments are entered into the SQL Database.
+        /// </summary>
+        /// <param name="gpID"></param>
+        /// <param name="numTreat"></param>
         public static void gptUVA(int gpID, int numTreat)
         {
             string sqlConnection = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
@@ -49,6 +54,11 @@ namespace Smart_Touch_Protocol_Utility.AddProtocols
             }
         }
 
+        /// <summary>
+        /// User defined UVB Global Treatment Protocols are entered into the SQL Database.
+        /// </summary>
+        /// <param name="gpID"></param>
+        /// <param name="numTreat"></param>
         public static void gptUVB(int gpID, int numTreat)
         {
             string sqlConnection = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;

@@ -10,6 +10,10 @@ namespace Smart_Touch_Protocol_Utility
 {
     class Import
     {
+        /// <summary>
+        /// Import all exported .csv files into the STUV4_0 Database by removing all dependencies
+        /// and truncating the tables.
+        /// </summary>
         public static void importTables()
         {
             string sqlConnection = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
@@ -39,7 +43,7 @@ namespace Smart_Touch_Protocol_Utility
                         cmd.ExecuteNonQuery();
 
                         // Opens the selected .csv files and loads into a dataTable which is then bulkCopy'd into
-                        // the corresponding database. dataTable is then reset and cleared of all data.
+                        // the corresponding table. DataTable is then reset and cleared of all data.
                         using (CsvReader csv = new CsvReader(new StreamReader(fbd.SelectedPath + @"\GlobalProtocols.csv"), true))
                         {
                             dataTable.Load(csv);

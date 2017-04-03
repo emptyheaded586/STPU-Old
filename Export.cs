@@ -7,6 +7,9 @@ namespace Smart_Touch_Protocol_Utility
 {
     class Export
     {
+        /// <summary>
+        /// Query the STUV4_0 Database and output all specified tables into .csv file format.
+        /// </summary>
         public static void exportTables()
         {
             string sqlConnection = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
